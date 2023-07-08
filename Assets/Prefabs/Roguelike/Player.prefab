@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 1046056513963283491}
   - component: {fileID: 1745979729322778911}
   - component: {fileID: 2404524925894642506}
-  m_Layer: 0
+  - component: {fileID: 834458536895509137}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -101,9 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea62534347a03894ba2c73ac9c656e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 1745979729322778911}
   StartingMaxHealth: 100
-  StartingDefense: 5
+  StartingDefense: 0.01
   StartingAttack: 5
   StartingRange: 1
   StartingSpeed: 5
@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d3e5e61572e86478c9262fbff33cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 0}
 --- !u!95 &1745979729322778911
 Animator:
   serializedVersion: 5
@@ -200,3 +201,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TestSkill: {fileID: 11400000, guid: a5b37498b55b1294387e08a5ee75faa7, type: 2}
+--- !u!50 &834458536895509137
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363220068894136826}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

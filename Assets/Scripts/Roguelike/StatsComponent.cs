@@ -47,5 +47,20 @@ public class StatsComponent : MonoBehaviour
     public void OnDamage(float dealtDamage)
     {
         currentHealth -= (int)Mathf.Ceil(dealtDamage * (1 - defense));
+
+        // Death
+        if (currentHealth <= 0)
+        {
+            // Do death callbacks
+            var adjustStatsBehavior = GetComponent<AdjustStatsBehavior>();
+            if (adjustStatsBehavior != null)
+            {
+                adjustStatsBehavior.AdjustPlayerStats();
+            }
+
+
+
+            Destroy(gameObject);
+        }
     }
 }

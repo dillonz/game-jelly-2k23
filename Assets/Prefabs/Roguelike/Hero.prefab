@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 4630595599452227190}
   - component: {fileID: 6215773042190633839}
   - component: {fileID: 3088883380122212973}
-  m_Layer: 0
+  - component: {fileID: 300991511703444938}
+  m_Layer: 10
   m_Name: Hero
   m_TagString: Hero
   m_Icon: {fileID: 0}
@@ -167,9 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7457fe61ef1285642a96832ff3646668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 5888274880014077187}
   StartingMaxHealth: 100
-  StartingDefense: 5
+  StartingDefense: 0.01
   StartingAttack: 5
   StartingRange: 1
   StartingSpeed: 4
@@ -214,3 +214,30 @@ MonoBehaviour:
   DistanceToTargetPlayer: 40
   DistanceToTargetMonster: 40
   MaxRandomMoveDistance: 10
+--- !u!50 &300991511703444938
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2885824930769119004}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

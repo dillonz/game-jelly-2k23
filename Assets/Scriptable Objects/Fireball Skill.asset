@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04f97afdd119be45801eadd924fb825, type: 3}
   m_Name: Fireball Skill
   m_EditorClassIdentifier: 
-  prefabToSpawn: {fileID: 1691194605416272369, guid: 35e81899ea0a7ac4680b4f0a0cea2bf1, type: 3}
+  fireballToSpawn: {fileID: 1691194605416272369, guid: 35e81899ea0a7ac4680b4f0a0cea2bf1, type: 3}
