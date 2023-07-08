@@ -25,3 +25,25 @@ using UnityEngine;
 //
 // Then create the function like so:
 // private void _OnSwitchTile(SwitchTile e) {}
+public class AdjustStats
+{
+    // Usage: Changes the players stats accordingly
+    public int MaxHealthDelta;
+    public float DefenseDelta;
+    public float AttackDelta;
+    public float RangeDelta;
+    public float SpeedDelta;
+    public float AttackSpeedDelta;
+    public float CooldownReductionDelta;
+
+    public AdjustStats(int maxHealthDelta, float defenseDelta, float attackDelta, float rangeDelta, float speedDelta, float attackSpeedDelta, float cooldownReductionDelta)
+    {
+        MaxHealthDelta = maxHealthDelta;
+        DefenseDelta = defenseDelta;
+        AttackDelta = attackDelta;
+        RangeDelta = rangeDelta;
+        SpeedDelta = speedDelta;
+        AttackSpeedDelta = attackSpeedDelta;
+        CooldownReductionDelta = cooldownReductionDelta;
+    }
+}
