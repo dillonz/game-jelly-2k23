@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Skills/Slimeball")]
-public class SlimeballSkill : Skill
+public class SlimeballSkill : ActiveSkill
 {
     [SerializeField]
     private GameObject prefabToSpawn;

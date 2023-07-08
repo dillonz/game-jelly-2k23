@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 523000b8a6ffad144abe9e1597269706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceBeforeAutoDestroy: 10
+  TimeBeforeDestroy: 5
   Speed: 5
   BaseDamage: 5
 --- !u!61 &8460433909950035885

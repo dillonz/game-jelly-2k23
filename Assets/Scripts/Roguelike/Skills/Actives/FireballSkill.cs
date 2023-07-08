@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [CreateAssetMenu(menuName = "Skills/Fireball")]
-public class FireballSkill : Skill
+public class FireballSkill : ActiveSkill
 {
     [SerializeField]
     private GameObject fireballToSpawn;

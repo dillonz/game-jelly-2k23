@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Skills/Invincibility")]
-public class InvincibilitySkill : Skill
+public class InvincibilitySkill : ActiveSkill
 {
 
     public override Skill Clone(GameObject owner)

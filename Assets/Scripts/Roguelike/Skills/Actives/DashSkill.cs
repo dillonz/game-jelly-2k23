@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Skills/Dash")]
-public class DashSkill : Skill
+public class DashSkill : ActiveSkill
 {
     [SerializeField]
     private float distance;

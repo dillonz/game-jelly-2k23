@@ -1,36 +1,51 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillComponent : MonoBehaviour
 {
-    public Skill TestSkill;
+    public ActiveSkill TestSkill;
 
-    private Skill skill1;
-    private Skill skill2;
+    private ActiveSkill skill1;
+    private ActiveSkill skill2;
+
+    private List<PassiveSkill> passiveSkills;
 
     void Start()
     {
-        AddSkill(0, TestSkill);
+        passiveSkills = new List<PassiveSkill>();
+
+        AddActiveSkill(0, TestSkill);
     }
 
-    void AddSkill(uint pos, Skill skill)
+    public void AddActiveSkill(uint pos, ActiveSkill skill)
     {
         Debug.Assert(pos < 2);
 
         if (pos == 0)
         {
-            skill1 = skill.Clone(this.gameObject);
+            skill1 = (ActiveSkill)skill.Clone(this.gameObject);
         }
         else if (pos == 1)
         {
-            skill2 = skill.Clone(this.gameObject);
+            skill2 = (ActiveSkill)skill.Clone(this.gameObject);
         }
+    }
+
+    public void AddPassiveSkill(PassiveSkill skill)
+    {
+        passiveSkills.Add(skill);
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (skill1 != null && Input.GetButtonDown("Fire2"))
         {
             skill1.OnUse();
+        }
+
+        foreach (PassiveSkill skill in passiveSkills)
+        {
+            skill.OnUpdate();
         }
     }
 }
