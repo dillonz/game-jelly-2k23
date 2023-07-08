@@ -32,6 +32,8 @@ public class StatsComponent : MonoBehaviour
         speed = StartingSpeed;
         attackSpeed = StartingAttackSpeed;
         cooldownReduction = StartingCooldownReduction;
+
+        currentHealth = maxHealth;
     }
 
     public int GetMaxHealth() { return maxHealth; }
@@ -41,4 +43,9 @@ public class StatsComponent : MonoBehaviour
     public float GetSpeed() { return speed; }
     public float GetAttackSpeed() { return attackSpeed; }
     public float GetCooldownReduction() { return cooldownReduction; }
+
+    public void OnDamage(float dealtDamage)
+    {
+        currentHealth -= (int)Mathf.Ceil(dealtDamage * (1 - defense));
+    }
 }
