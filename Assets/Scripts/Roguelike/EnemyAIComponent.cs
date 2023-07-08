@@ -15,7 +15,6 @@ public enum AIType
 public enum AIState
 {
     Idle,
-    Moving,
     TargetingHero,
     TargetingPlayer,
     TargetingMonster,
@@ -51,6 +50,8 @@ public class EnemyAIComponent : MonoBehaviour
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent.updateRotation = false;
+        _navMeshAgent.updateUpAxis = false;
 
         GameObject[] playerTaggedObjects = GameObject.FindGameObjectsWithTag("Player");
         Debug.Assert(playerTaggedObjects.Length > 0, "playerTaggedObjects.Length > 0");
@@ -142,9 +143,6 @@ public class EnemyAIComponent : MonoBehaviour
             case AIState.Idle:
                 IdleStateThink();
                 break;
-            case AIState.Moving:
-                MovingStateThink();
-                break;
             case AIState.TargetingHero:
                 TargetingHeroStateThink();
                 break;
@@ -189,19 +187,6 @@ public class EnemyAIComponent : MonoBehaviour
         NavMesh.SamplePosition(randomPos, out hit, maxDistance, NavMesh.AllAreas);
 
         return hit.position;
-    }
-
-    private void MovingStateThink()
-    {
-        if (_hero != null && _distanceToHero < DistanceToTargetHero)
-        {
-            _aiState = AIState.TargetingHero;
-        }
-        // Can we attack the player
-        else if (_player != null && _distanceToPlayer < DistanceToTargetPlayer)
-        {
-            _aiState = AIState.TargetingPlayer;
-        }
     }
 
     private void TargetingHeroStateThink()

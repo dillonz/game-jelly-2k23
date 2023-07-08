@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2710233134602437141}
   m_Layer: 0
   m_Name: Hero
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &-1358233446494853570
 SpriteRenderer:
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ee2a2fd8ddeb84a8cdc15f23cdeb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AIType: 0
+  AIType: 1
   DistanceCheckTime: 1
   RetryThinkTime: 10
   DistanceToTargetHero: 40
