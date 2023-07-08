@@ -3,27 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class CombatComponent : MonoBehaviour
+public class PlayerStatsComponent : StatsComponent
 {
-    public Animator Animator;
-    
-    public int StartingMaxHealth;
-    public float StartingDefense;
-    public float StartingAttack;
-    public float StartingRange;
-    public float StartingSpeed;
-    public float StartingAttackSpeed;
-    public float StartingCooldownReduction;
-
-    private int maxHealth;
-    private float defense;
-    private float attack;
-    private float range;
-    private float speed;
-    private float attackSpeed;
-    private float cooldownReduction;
-
-    private int currentHealth;
     private Subscription<AdjustStats> adjustStatsSub;
 
     void Start()
@@ -37,8 +18,6 @@ public class CombatComponent : MonoBehaviour
         cooldownReduction = StartingCooldownReduction;
 
         adjustStatsSub = EventBus.Subscribe<AdjustStats>(_OnAdjustStats);
-        // Then create the function like so:
-        // private void _OnSwitchTile(SwitchTile e) {}
     }
 
     void Update()
@@ -57,6 +36,8 @@ public class CombatComponent : MonoBehaviour
         if (defense < 1) { defense = 1; }
         attack -= e.AttackDelta;
         if (attack < 1) { attack = 1; }
+        attackSpeed -= e.AttackSpeedDelta;
+        if (attackSpeed < 1) { attackSpeed = 1; }
         range -= e.RangeDelta;
         if (range < 1) { range = 1; }
         speed -= e.SpeedDelta;
