@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(BoxCollider2D))]
 public class FireballComponent : MonoBehaviour
 {
-    public float DistanceBeforeAutoDestroy;
+    public float TimeBeforeDestroy;
     public float Speed;
     public float BaseDamage;
 
@@ -14,18 +14,17 @@ public class FireballComponent : MonoBehaviour
     [NonSerialized]
     public Vector2 Direction;
 
-    private Vector3 startLocation;
+    private float timeElapsed = 0;
 
     void Start()
     {
         Debug.Assert(Caster != null);
-
-        startLocation = this.transform.position;
     }
     
     void Update()
     {
-        if (Vector3.Distance(startLocation, this.transform.position) > DistanceBeforeAutoDestroy)
+        timeElapsed += Time.deltaTime;
+        if (timeElapsed > TimeBeforeDestroy)
         {
             Destroy(this.gameObject);
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(SpriteRenderer), typeof(StatsComponent))]
+[RequireComponent(typeof(SpriteRenderer), typeof(StatsComponent), typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     public Animator Animator;
@@ -14,24 +14,35 @@ public class PlayerMovement : MonoBehaviour
     public bool FacingLeft { get; private set; } = true;
 
     private StatsComponent stats;
+    private Rigidbody2D rigidBody2D;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         stats = GetComponent<StatsComponent>();
+        rigidBody2D = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     void Update()
     {
-        XMove = Input.GetAxisRaw("Horizontal") * Time.deltaTime * stats.GetSpeed();
-        YMove = Input.GetAxisRaw("Vertical") * Time.deltaTime * stats.GetSpeed();
+        
+    }
+
+    void FixedUpdate()
+    {
+        XMove = Input.GetAxisRaw("Horizontal") * stats.GetSpeed();
+        YMove = Input.GetAxisRaw("Vertical") * stats.GetSpeed();
 
         NormalDirection = new Vector2(XMove, YMove).normalized;
 
-        transform.position += new Vector3(XMove, YMove, 0);
+        this.rigidBody2D.velocity = new Vector2(XMove, YMove);
+
+        //transform.position += new Vector3(XMove, YMove, 0);
 
         if (XMove != 0)
         {
             FacingLeft = XMove > 0;
-            GetComponent<SpriteRenderer>().flipX = FacingLeft;
+            spriteRenderer.flipX = FacingLeft;
         }
     }
 }

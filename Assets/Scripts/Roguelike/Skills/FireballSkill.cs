@@ -25,19 +25,25 @@ public class FireballSkill : Skill
             var fireballComp = obj.GetComponent<FireballComponent>();
             fireballComp.Caster = owner;
 
-            var playerMovement = owner.GetComponent<PlayerMovement>();
-            if (playerMovement != null)
+            var rigidBody2D = owner.GetComponent<Rigidbody2D>();
+            if (rigidBody2D != null)
             {
-                fireballComp.Direction = playerMovement.NormalDirection;
+                fireballComp.Direction = rigidBody2D.velocity.normalized;
             }
 
-            var navMeshAgent = owner.GetComponent<NavMeshAgent>();
-            if (navMeshAgent != null)
+            // If the character isn't moving, try to figure out where they are facing
+            if (fireballComp.Direction.magnitude < 0.01)
             {
-                fireballComp.Direction = new Vector2(navMeshAgent.velocity.x, navMeshAgent.velocity.y).normalized;
+                var playerMovement = owner.GetComponent<PlayerMovement>();
+                if (playerMovement != null)
+                {
+                    fireballComp.Direction = playerMovement.NormalDirection;
+                }
+                else
+                {
+                    fireballComp.Direction = Vector2.right;
+                }
             }
-
-
         }
     }
 }
