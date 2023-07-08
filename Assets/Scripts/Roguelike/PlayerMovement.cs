@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public int speed;
+
     void Start()
     {
         
@@ -12,8 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float xMove = Input.GetAxisRaw("Horizontal") * Time.deltaTime * 5;
-        float yMove = Input.GetAxisRaw("Vertical") * Time.deltaTime * 5;
+        float xMove = Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed;
+        float yMove = Input.GetAxisRaw("Vertical") * Time.deltaTime * speed;
 
         this.transform.position += new Vector3(xMove, yMove, 0);
     }
