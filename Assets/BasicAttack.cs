@@ -6,6 +6,7 @@ using UnityEngine;
 public class BasicAttack : MonoBehaviour
 {
     public Animator Animator;
+    public GameObject AttackObject;
 
     private StatsComponent stats;
 
@@ -21,6 +22,9 @@ public class BasicAttack : MonoBehaviour
         {
             Animator.SetBool("isAttacking", true);
             Animator.SetBool("facingLeft", GetComponent<PlayerMovement>().FacingLeft);
+
+            GameObject go = Instantiate(AttackObject, transform.position, transform.rotation);
+            go.GetComponent<DoDamageOnStart>().Stats = stats;
         }
     }
 }

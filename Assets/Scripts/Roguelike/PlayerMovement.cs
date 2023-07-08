@@ -6,8 +6,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(SpriteRenderer), typeof(StatsComponent), typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    public Animator Animator;
-
     public float XMove { get; private set; } = 0;
     public float YMove { get; private set; } = 0;
     public Vector2 NormalDirection { get; private set; } = new Vector2(0f, 0f);
@@ -23,21 +21,15 @@ public class PlayerMovement : MonoBehaviour
         rigidBody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    void Update()
-    {
-        
-    }
 
     void FixedUpdate()
     {
-        XMove = Input.GetAxisRaw("Horizontal") * stats.GetSpeed();
-        YMove = Input.GetAxisRaw("Vertical") * stats.GetSpeed();
+        XMove = Input.GetAxisRaw("Horizontal");
+        YMove = Input.GetAxisRaw("Vertical");
 
         NormalDirection = new Vector2(XMove, YMove).normalized;
 
-        this.rigidBody2D.velocity = new Vector2(XMove, YMove);
-
-        //transform.position += new Vector3(XMove, YMove, 0);
+        rigidBody2D.velocity = NormalDirection * stats.GetSpeed();
 
         if (XMove != 0)
         {

@@ -51,6 +51,7 @@ public class StatsComponent : MonoBehaviour
         // Death
         if (currentHealth <= 0)
         {
+            bool isPlayer = GetComponent<PlayerStatsComponent>() != null;
             // Do death callbacks
             var adjustStatsBehavior = GetComponent<AdjustStatsBehavior>();
             if (adjustStatsBehavior != null)
@@ -58,9 +59,10 @@ public class StatsComponent : MonoBehaviour
                 adjustStatsBehavior.AdjustPlayerStats();
             }
 
-
-
-            Destroy(gameObject);
+            if (!isPlayer)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

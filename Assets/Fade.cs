@@ -34,19 +34,10 @@ public class Fade : MonoBehaviour
 
         if (time > FadeStart + Duration)
         {
-            Component[] components = GetComponents(typeof(MonoBehaviour));
-            foreach (MonoBehaviour comp in components)
-            {
-                comp.enabled = false;
-            }
-            ParticleSystem ps = GetComponent<ParticleSystem>();
-            if (ps != null) ps.Stop();
-        }
-
-        if (time > FadeStart + Duration + 2)
-        {
             Destroy(gameObject);
         }
+
+
     }
 
     IEnumerator FadeColor(Color start, Color end, float duration)

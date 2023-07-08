@@ -15,7 +15,11 @@ GameObject:
   - component: {fileID: 1046056513963283491}
   - component: {fileID: 1745979729322778911}
   - component: {fileID: 834458536895509137}
+<<<<<<< Updated upstream
   - component: {fileID: 4605511652066232294}
+=======
+  - component: {fileID: 5371970902910486916}
+>>>>>>> Stashed changes
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -166,7 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d3e5e61572e86478c9262fbff33cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 0}
 --- !u!95 &1745979729322778911
 Animator:
   serializedVersion: 5
@@ -215,7 +218,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+<<<<<<< Updated upstream
 --- !u!114 &4605511652066232294
+=======
+--- !u!114 &5371970902910486916
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,7 +231,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1363220068894136826}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: c86c4e09cbd7b3c42aca66fc34e575bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TestSkill: {fileID: 11400000, guid: a5b37498b55b1294387e08a5ee75faa7, type: 2}
+=======
+  m_Script: {fileID: 11500000, guid: 3d4f55ce30854d1479cb4eeb8d9ba52f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 1745979729322778911}
+  AttackObject: {fileID: 2095411158981030204, guid: 0dabf683594816341997283ba5d6ded4, type: 3}
+>>>>>>> Stashed changes
