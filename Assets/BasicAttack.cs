@@ -8,12 +8,14 @@ public class BasicAttack : MonoBehaviour
     public Animator Animator;
     public GameObject AttackObject;
 
-    private StatsComponent stats;
+    StatsComponent stats;
+    PlayerMovement playerMovement;
 
     // Start is called before the first frame update
     void Start()
     {
         stats = GetComponent<StatsComponent>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -21,7 +23,7 @@ public class BasicAttack : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Animator.SetBool("isAttacking", true);
-            Animator.SetBool("facingLeft", GetComponent<PlayerMovement>().FacingLeft);
+            Animator.SetBool("facingLeft", playerMovement.FacingLeft);
 
             GameObject go = Instantiate(AttackObject, transform.position, transform.rotation);
             go.GetComponent<DoDamageOnStart>().Stats = stats;
