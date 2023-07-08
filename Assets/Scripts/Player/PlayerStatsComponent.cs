@@ -1,31 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 public class PlayerStatsComponent : StatsComponent
 {
     private Subscription<AdjustStats> adjustStatsSub;
 
-    void Start()
+    new void Start()
     {
-        maxHealth = StartingMaxHealth;
-        defense = StartingDefense;
-        attack = StartingAttack;
-        range = StartingRange;
-        speed = StartingSpeed;
-        attackSpeed = StartingAttackSpeed;
-        cooldownReduction = StartingCooldownReduction;
-
+        base.Start();
         adjustStatsSub = EventBus.Subscribe<AdjustStats>(_OnAdjustStats);
-    }
-
-    void Update()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Animator.SetBool("isAttacking", true);
-        }
     }
 
     void _OnAdjustStats(AdjustStats e)

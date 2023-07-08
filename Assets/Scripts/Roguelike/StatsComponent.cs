@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class StatsComponent : MonoBehaviour
 {
-    public Animator Animator;
-
     public int StartingMaxHealth;
     public float StartingDefense;
     public float StartingAttack;
@@ -25,7 +23,7 @@ public class StatsComponent : MonoBehaviour
 
     protected int currentHealth;
 
-    void Start()
+    protected void Start()
     {
         maxHealth = StartingMaxHealth;
         defense = StartingDefense;
@@ -34,6 +32,8 @@ public class StatsComponent : MonoBehaviour
         speed = StartingSpeed;
         attackSpeed = StartingAttackSpeed;
         cooldownReduction = StartingCooldownReduction;
+
+        currentHealth = maxHealth;
     }
 
     public int GetMaxHealth() { return maxHealth; }
@@ -43,4 +43,24 @@ public class StatsComponent : MonoBehaviour
     public float GetSpeed() { return speed; }
     public float GetAttackSpeed() { return attackSpeed; }
     public float GetCooldownReduction() { return cooldownReduction; }
+
+    public void OnDamage(float dealtDamage)
+    {
+        currentHealth -= (int)Mathf.Ceil(dealtDamage * (1 - defense));
+
+        // Death
+        if (currentHealth <= 0)
+        {
+            // Do death callbacks
+            var adjustStatsBehavior = GetComponent<AdjustStatsBehavior>();
+            if (adjustStatsBehavior != null)
+            {
+                adjustStatsBehavior.AdjustPlayerStats();
+            }
+
+
+
+            Destroy(gameObject);
+        }
+    }
 }
