@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NavMeshPlus.Components;
 using UnityEngine;
 
 public class generate : MonoBehaviour
@@ -11,6 +12,7 @@ public class generate : MonoBehaviour
     const int roomHeight = 12;
     const int roomWidth = 20;
 
+    public NavMeshSurface Surface2D;
     public GameObject[] Rooms;
     public GameObject[] VertWalls;
     public GameObject[] VertDoors;
@@ -32,6 +34,8 @@ public class generate : MonoBehaviour
         
         generateRooms();
         generateWalls();
+
+        Surface2D.BuildNavMesh();
     }
 
     private void generateMap()

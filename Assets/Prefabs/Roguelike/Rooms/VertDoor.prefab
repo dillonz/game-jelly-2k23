@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6362497883801927826}
   - component: {fileID: 4679220471911017263}
   - component: {fileID: 3075153245558857440}
+  - component: {fileID: 2578515479214481512}
   m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
@@ -168,6 +169,22 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &2578515479214481512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2960754185271850101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &3438667469567175165
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +245,7 @@ GameObject:
   - component: {fileID: 4970526595342409980}
   - component: {fileID: 6067978539443805713}
   - component: {fileID: 6764703497244687501}
+  - component: {fileID: 8925303841987651036}
   m_Layer: 6
   m_Name: Walls
   m_TagString: Untagged
@@ -697,3 +715,19 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &8925303841987651036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803673555135469122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
