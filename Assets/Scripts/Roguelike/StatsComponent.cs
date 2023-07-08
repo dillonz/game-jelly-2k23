@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class StatsComponent : MonoBehaviour
 {
-    public Animator Animator;
-
     public int StartingMaxHealth;
     public float StartingDefense;
     public float StartingAttack;
@@ -25,7 +23,7 @@ public class StatsComponent : MonoBehaviour
 
     protected int currentHealth;
 
-    void Start()
+    protected void Start()
     {
         maxHealth = StartingMaxHealth;
         defense = StartingDefense;
