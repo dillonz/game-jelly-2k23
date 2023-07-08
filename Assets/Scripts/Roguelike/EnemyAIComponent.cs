@@ -21,13 +21,10 @@ public enum AIState
 }
 
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent), typeof(StatsComponent))]
 public class EnemyAIComponent : MonoBehaviour
 {
     public AIType AIType;
-
-    public float DistanceCheckTime = 1f;
-    public float RetryThinkTime = 10f;
 
     public float DistanceToTargetHero = 40f;
     public float DistanceToTargetPlayer = 40f;
@@ -35,13 +32,13 @@ public class EnemyAIComponent : MonoBehaviour
     public float MaxRandomMoveDistance = 10f;
 
     private NavMeshAgent _navMeshAgent;
+    private StatsComponent _statsComponent;
 
     private AIState _aiState = AIState.Idle;
     private GameObject _player;
     private GameObject _hero;
     private GameObject[] _monsters;
-
-    private float _lastCheckedDistanceTime = 0;
+    
     private float _distanceToPlayer = 1000f;
     private float _distanceToHero = 1000f;
     private GameObject _closestMonster;
@@ -49,6 +46,7 @@ public class EnemyAIComponent : MonoBehaviour
 
     void Start()
     {
+        _statsComponent = GetComponent<StatsComponent>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis = false;
@@ -62,18 +60,18 @@ public class EnemyAIComponent : MonoBehaviour
         _hero = heroTaggedObjects[0];
 
         _monsters = GameObject.FindGameObjectsWithTag("Monster");
+
+        StartCoroutine(CalculateDistances());
+        StartCoroutine(ThinkCoroutine());
     }
 
     void Update()
     {
-        CalculateDistances();
-
-        Think();
     }
 
-    private void CalculateDistances()
+    private IEnumerator CalculateDistances()
     {
-        if (_lastCheckedDistanceTime + DistanceCheckTime < Time.time)
+        for (;;)
         {
             bool shouldCheckHero = AIType == AIType.Monster && _hero != null;
             bool shouldCheckPlayer = (AIType == AIType.Monster || AIType == AIType.Hero) && _player != null;
@@ -117,7 +115,7 @@ public class EnemyAIComponent : MonoBehaviour
                 }
             }
 
-            _lastCheckedDistanceTime = Time.time;
+            yield return new WaitForSeconds(1f);
         }
     }
 
@@ -136,22 +134,27 @@ public class EnemyAIComponent : MonoBehaviour
         return length;
     }
 
-    private void Think()
+    private IEnumerator ThinkCoroutine()
     {
-        switch (_aiState)
+        for (;;)
         {
-            case AIState.Idle:
-                IdleStateThink();
-                break;
-            case AIState.TargetingHero:
-                TargetingHeroStateThink();
-                break;
-            case AIState.TargetingPlayer:
-                TargetingPlayerStateThink();
-                break;
-            case AIState.TargetingMonster:
-                TargetingMonsterStateThink();
-                break;
+            switch (_aiState)
+            {
+                case AIState.Idle:
+                    IdleStateThink();
+                    break;
+                case AIState.TargetingHero:
+                    TargetingHeroStateThink();
+                    break;
+                case AIState.TargetingPlayer:
+                    TargetingPlayerStateThink();
+                    break;
+                case AIState.TargetingMonster:
+                    TargetingMonsterStateThink();
+                    break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -175,6 +178,7 @@ public class EnemyAIComponent : MonoBehaviour
         else if (Random.value > .9f)
         {
             _navMeshAgent.destination = GetRandomPointOnNavMesh(this.transform.position, MaxRandomMoveDistance);
+            _navMeshAgent.speed = _statsComponent.GetSpeed();
         }
     }
 
@@ -186,7 +190,7 @@ public class EnemyAIComponent : MonoBehaviour
         
         NavMesh.SamplePosition(randomPos, out hit, maxDistance, NavMesh.AllAreas);
 
-        return hit.position;
+        return new Vector3(hit.position.x, hit.position.y, 0);
     }
 
     private void TargetingHeroStateThink()
@@ -198,6 +202,7 @@ public class EnemyAIComponent : MonoBehaviour
         else
         {
             _navMeshAgent.destination = _hero.transform.position;
+            _navMeshAgent.speed = _statsComponent.GetSpeed();
         }
     }
 
@@ -210,6 +215,7 @@ public class EnemyAIComponent : MonoBehaviour
         else
         {
             _navMeshAgent.destination = _player.transform.position;
+            _navMeshAgent.speed = _statsComponent.GetSpeed();
         }
     }
 
@@ -222,6 +228,7 @@ public class EnemyAIComponent : MonoBehaviour
         else
         {
             _navMeshAgent.destination = _closestMonster.transform.position;
+            _navMeshAgent.speed = _statsComponent.GetSpeed();
         }
     }
     

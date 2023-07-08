@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7308934593965735891}
   - component: {fileID: -1358233446494853570}
-  - component: {fileID: 1967187092475133179}
-  - component: {fileID: 8975902048446925750}
-  - component: {fileID: -2710233134602437141}
+  - component: {fileID: 2296224530950901426}
+  - component: {fileID: 5888274880014077187}
+  - component: {fileID: 4630595599452227190}
+  - component: {fileID: 6215773042190633839}
+  - component: {fileID: 3088883380122212973}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Hero
@@ -87,7 +89,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1967187092475133179
+--- !u!61 &2296224530950901426
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2885824930769119004}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!95 &5888274880014077187
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -97,7 +144,7 @@ Animator:
   m_GameObject: {fileID: 2885824930769119004}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 52ec078ae0603bf4db1e0064f4d4c1c0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -108,7 +155,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!195 &8975902048446925750
+--- !u!114 &4630595599452227190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2885824930769119004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7457fe61ef1285642a96832ff3646668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 5888274880014077187}
+  StartingMaxHealth: 100
+  StartingDefense: 5
+  StartingAttack: 5
+  StartingRange: 1
+  StartingSpeed: 4
+  StartingAttackSpeed: 1
+  StartingCooldownReduction: 0
+--- !u!195 &6215773042190633839
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +185,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 3.5
   m_Acceleration: 1000
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -130,7 +197,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-2710233134602437141
+--- !u!114 &3088883380122212973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,8 +210,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AIType: 1
-  DistanceCheckTime: 1
-  RetryThinkTime: 10
   DistanceToTargetHero: 40
   DistanceToTargetPlayer: 40
   DistanceToTargetMonster: 40

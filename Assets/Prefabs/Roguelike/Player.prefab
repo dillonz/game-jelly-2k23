@@ -101,8 +101,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 1745979729322778911}
-  Health: 0
-  MaxHealth: 0
+  StartingMaxHealth: 100
+  StartingDefense: 5
+  StartingAttack: 5
+  StartingRange: 1
+  StartingSpeed: 5
+  StartingAttackSpeed: 1
+  StartingCooldownReduction: 0
 --- !u!61 &1839801599670451981
 BoxCollider2D:
   m_ObjectHideFlags: 0
