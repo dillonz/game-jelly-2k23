@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class SkillComponent : MonoBehaviour
 {
     public ActiveSkill TestSkill;
@@ -85,4 +87,26 @@ public class SkillComponent : MonoBehaviour
     
     public ActiveSkill GetSkill1() { return skill1; }
     public ActiveSkill GetSkill2() { return skill2; }
+
+
+    public void ChangeAlpha(float alpha, float timeLength)
+    {
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            float oldAlpha = spriteRenderer.color.a;
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, alpha);
+            StartCoroutine(ReturnAlpha(oldAlpha, timeLength));
+        }
+    }
+
+    public IEnumerator ReturnAlpha(float oldAlpha, float timeLength)
+    {
+        yield return new WaitForSeconds(timeLength);
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, oldAlpha);
+        }
+    }
 }

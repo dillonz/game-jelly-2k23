@@ -23,6 +23,8 @@ public class StatsComponent : MonoBehaviour
 
     protected float currentHealth;
 
+    private Stack<bool> isInvulnerable = new();
+
     protected void Start()
     {
         maxHealth = StartingMaxHealth;
@@ -45,8 +47,25 @@ public class StatsComponent : MonoBehaviour
     public float GetCooldownReduction() { return cooldownReduction; }
     public float GetCurrentHealth() { return currentHealth; }
 
+    public void SetInvulnerable(float timeLength)
+    {
+        isInvulnerable.Push(true);
+        StartCoroutine(WaitUnsetInvulnerable(timeLength));
+    }
+
+    private IEnumerator WaitUnsetInvulnerable(float timeLength)
+    {
+        yield return new WaitForSeconds(timeLength);
+        isInvulnerable.Pop();
+    }
+
     public void OnDamage(float dealtDamage)
     {
+        if (isInvulnerable.Count > 0)
+        {
+            return;
+        }
+
         currentHealth -= dealtDamage * (1 - defense / 100);
 
         // Death

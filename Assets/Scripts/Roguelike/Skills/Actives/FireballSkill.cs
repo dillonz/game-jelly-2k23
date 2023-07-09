@@ -19,8 +19,9 @@ public class FireballSkill : ActiveSkill
         return newSkill;
     }
 
-    public override void OnUse()
+    public override bool OnUse()
     {
+        Debug.Assert(fireballToSpawn != null);
         if (fireballToSpawn != null)
         {
             GameObject obj = Instantiate(fireballToSpawn, owner.transform.position, owner.transform.rotation);
@@ -47,5 +48,7 @@ public class FireballSkill : ActiveSkill
                 }
             }
         }
+
+        return true;
     }
 }

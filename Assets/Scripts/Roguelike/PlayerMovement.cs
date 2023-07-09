@@ -38,6 +38,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void DoDash(float force, float waitTime)
+    {
+        this.enabled = false;
+        StopMoving();
+        rigidBody2D.AddForce(NormalDirection * force);
+        StartCoroutine(StopDash(waitTime));
+    }
+
+    private IEnumerator StopDash(float waitTIme)
+    {
+        yield return new WaitForSeconds(waitTIme);
+        this.enabled = true;
+    }
+
     public void StopMoving()
     {
         XMove = 0; YMove = 0;

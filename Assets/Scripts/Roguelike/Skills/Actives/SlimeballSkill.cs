@@ -17,8 +17,9 @@ public class SlimeballSkill : ActiveSkill
         return newSkill;
     }
 
-    public override void OnUse()
+    public override bool OnUse()
     {
+        Debug.Assert(slimeballToSpawn != null);
         if (slimeballToSpawn != null)
         {
             GameObject obj = Instantiate(slimeballToSpawn, owner.transform.position, owner.transform.rotation);
@@ -45,5 +46,7 @@ public class SlimeballSkill : ActiveSkill
                 }
             }
         }
+
+        return true;
     }
 }
