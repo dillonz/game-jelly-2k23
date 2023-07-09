@@ -112,6 +112,7 @@ MonoBehaviour:
   StartingSpeed: 5
   StartingAttackCooldown: 0.5
   StartingCooldownReduction: 0
+  IsHero: 0
 --- !u!61 &1839801599670451981
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -352,4 +353,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa164aaf6c675f4ca11029f0b7638d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceToDetect: 5
+  DistanceToDetect: 1
+  HelpText: {fileID: 0}
