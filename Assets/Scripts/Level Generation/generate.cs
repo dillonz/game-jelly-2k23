@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using NavMeshPlus.Components;
 using UnityEngine;
 
@@ -7,8 +8,7 @@ public class generate : MonoBehaviour
 {
     public int Width;
     public int Height;
-    public int WalkLength;
-    public int NumWalks;
+    public int RoomsToAdd;
     const int roomHeight = 12;
     const int roomWidth = 20;
 
@@ -29,9 +29,7 @@ public class generate : MonoBehaviour
 
     public void runGeneration()
     {
-        //generateMap();
-        //printMap();
-        
+        generateMap();
         generateRooms();
         generateWalls();
 
@@ -41,86 +39,143 @@ public class generate : MonoBehaviour
     private void generateMap()
     {
         roomMap = new bool[Width, Height];
+        List<Vector2Int> neighbors = new List<Vector2Int>();
+        int x = Width / 2, y = Height /2;
 
-        int x = 0, y = 0;
-        for (int i = 0; i < NumWalks; i++)
+        for (int i = 0; i < RoomsToAdd; i++)
         {
-            for (int j = 0; j < WalkLength; j++)
-            {
-                roomMap[x, y] = true;
-                nextStep(ref x, ref y);
-            }
-            x = getRand(roomWidth);
-            y = getRand(roomHeight);
+            roomMap[x, y] = true;
+            addNeighbors(x, y, neighbors);
+            int rand = getRand(neighbors.Count);
+            x = neighbors[rand].x;
+            y = neighbors[rand].y;
+            neighbors.RemoveAt(rand);
         }
+        
     }
 
-    private void nextStep(ref int x, ref int y)
+    private void addNeighbors(int x, int y, List<Vector2Int> neighbors)
     {
-        bool[] possiblities = new bool[] { x > 0, x < Width, y > 0, y < Height };
-        int rand;
-        do
+        if (x > 0)
         {
-            rand = getRand(4);
-        } while (!possiblities[rand]);
-        
-        if (rand == 0)
-            x -= 1;
-        if (rand == 1)
-            x += 1;
-        if (rand == 2)
-            y -= 1;
-        if (rand == 3)
-            y += 1;
+            if (!roomMap[x-1, y] && !neighbors.Contains(new Vector2Int(x-1, y)))
+            {
+                neighbors.Add(new Vector2Int(x - 1, y));
+            }
+        }
+        if (x < Width -1)
+        {
+            if (!roomMap[x + 1, y] && !neighbors.Contains(new Vector2Int(x + 1, y)))
+            {
+                neighbors.Add(new Vector2Int(x + 1, y));
+            }
+        }
+        if (y > 0)
+        {
+            if (!roomMap[x, y - 1] && !neighbors.Contains(new Vector2Int(x, y - 1)))
+            {
+                neighbors.Add(new Vector2Int(x, y - 1));
+            }
+        }
+        if (y < Height - 1)
+        {
+            if (!roomMap[x, y + 1] && !neighbors.Contains(new Vector2Int(x, y + 1)))
+            {
+                neighbors.Add(new Vector2Int(x, y + 1));
+            }
+        }
     }
 
     private void printMap()
     {
-        for (int i = 0 ;i < Width;i++) 
-        { 
+        string output = "";
+        output += "XXXXXXXXXXXXXXXXX\n";
+        for (int i = 0; i < Width;i++) 
+        {
+            output += "X";
             for (int j = 0; j < Height; j++) 
             {
-                Debug.Log(roomMap[i, j] ? "X" : " ");
+                output += roomMap[i, j] ? "O" : " ";
             }
+            output += "X\n";
         }
+        output += "XXXXXXXXXXXXXXXXX";
+        print(output);
     }
 
     private void generateRooms()
     {
         for (int x = 0; x < Width; x++)
-        {
             for (int y = 0; y < Height; y++)
-            {
-                Instantiate(Rooms[getRand(Rooms.Length)], new Vector3(x * roomWidth, y * roomHeight, 0), Quaternion.identity);
-            }
-        }
+                if (roomMap[x, y])
+                    Instantiate(Rooms[getRand(Rooms.Length)], new Vector3(x * roomWidth, y * roomHeight, 0), Quaternion.identity);
     }
 
     private void generateWalls()
     {
+        int vertWall = 0, horzWall = 0;
         for (int x = 0; x < Width + 1; x++)
         {
             for (int y = 0; y < Height + 1; y++)
             {
                 
-                bool isVertWall = (x == 0 || x == Width); // ? true : Random.value > 0.5;
-                bool isHorzWall = (y == 0 || y == Height); // ? true : Random.value > 0.5;
+                wallOrDoor(x, y, ref vertWall, ref horzWall);
+
                 if (y < Height)
                 {
-                    if (isVertWall)
+                    if (vertWall == 1)
                         Instantiate(VertWalls[getRand(VertWalls.Length)], new Vector3(x * roomWidth, y * roomHeight, 0), Quaternion.identity);
-                    else
+                    else if (vertWall == 2)
                         Instantiate(VertDoors[getRand(VertDoors.Length)], new Vector3(x * roomWidth, y * roomHeight, 0), Quaternion.identity);
                 }
                 if (x < Width)
                 {
-                    if (isHorzWall)
+                    if (horzWall == 1)
                         Instantiate(HorzWalls[getRand(HorzWalls.Length)], new Vector3(x * roomWidth, y * roomHeight, 0), Quaternion.identity);
-                    else
+                    else if (horzWall == 2)
                         Instantiate(HorzDoors[getRand(HorzDoors.Length)], new Vector3(x * roomWidth, y * roomHeight, 0), Quaternion.identity);
                 }
             }
         }
+    }
+
+    private void wallOrDoor(int x, int y, ref int vertWall, ref int horzWall)
+    {
+        vertWall = 0;
+        horzWall = 0;
+
+        if (x == Width && y == Height) return;
+
+        if (y < Height && x < Width)
+        {
+            if (roomMap[x, y])
+            {
+                vertWall = 1;
+                horzWall = 1;
+            }
+            if (x > 0)
+            {
+                if (roomMap[x-1, y])
+                {
+                    vertWall = 1;
+                }
+            }
+            if (y > 0)
+            {
+                if (roomMap[x, y - 1])
+                {
+                    horzWall = 1;
+                }
+            }
+        }
+
+        if (y == Height)
+            if (roomMap[x, y - 1])
+                horzWall = 1;
+        if (x == Width)
+            if (roomMap[x - 1, y])
+                vertWall = 1;
+
     }
 
     private int getRand(int range)
