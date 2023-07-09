@@ -150,11 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190eaf91e9a11714087a15a2f268a4eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealthDelta: 4
-  DefenseDelta: 0.01
+  MaxHealthDelta: 5
+  DefenseDelta: 0.05
   AttackDelta: 0
-  RangeDelta: 0
-  SpeedDelta: 0
+  RangeDelta: 0.3
+  SpeedDelta: 0.3
   AttackSpeedDelta: 0
   CooldownReductionDelta: 0
 --- !u!195 &4353876117745998492
@@ -212,13 +212,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7457fe61ef1285642a96832ff3646668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingMaxHealth: 10
-  StartingDefense: 0.01
-  StartingAttack: 5
+  StartingMaxHealth: 20
+  StartingDefense: 0.4
+  StartingAttack: 3
   StartingRange: 1
   StartingSpeed: 1
   StartingAttackCooldown: 1
   StartingCooldownReduction: 0
+  IsHero: 0
 --- !u!114 &9021773806674977716
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -171,12 +171,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7457fe61ef1285642a96832ff3646668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingMaxHealth: 100
+  StartingMaxHealth: 175
   StartingDefense: 0.3
   StartingAttack: 5
   StartingRange: 1
   StartingSpeed: 4
-  StartingAttackCooldown: 0
+  StartingAttackCooldown: 1
   StartingCooldownReduction: 0
   IsHero: 1
 --- !u!195 &6215773042190633839
@@ -216,7 +216,7 @@ MonoBehaviour:
   AIType: 1
   DistanceToTargetHero: 40
   DistanceToTargetPlayer: 20
-  DistanceToTargetMonster: 50
+  DistanceToTargetMonster: 80
   MaxRandomMoveDistance: 10
 --- !u!50 &300991511703444938
 Rigidbody2D:
