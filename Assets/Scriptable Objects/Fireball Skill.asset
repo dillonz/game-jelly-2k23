@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af52de60df3c1d545bc32fe8636dfc03, type: 3}
+  m_Name: Fireball Skill
+  m_EditorClassIdentifier: 
+  CooldownTime: 1
+  UIImage: {fileID: 358020459, guid: 2e94088e19d0e4544a722c26925cfaa5, type: 3}
+  fireballToSpawn: {fileID: 1691194605416272369, guid: 35e81899ea0a7ac4680b4f0a0cea2bf1, type: 3}

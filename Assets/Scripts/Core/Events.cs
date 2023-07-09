@@ -25,3 +25,46 @@ using UnityEngine;
 //
 // Then create the function like so:
 // private void _OnSwitchTile(SwitchTile e) {}
+public class AdjustStats
+{
+    // Usage: Changes the players stats accordingly
+    public float MaxHealthDelta;
+    public float DefenseDelta;
+    public float AttackDelta;
+    public float RangeDelta;
+    public float SpeedDelta;
+    public float AttackSpeedDelta;
+    public float CooldownReductionDelta;
+
+    public AdjustStats(float maxHealthDelta, float defenseDelta, float attackDelta, float rangeDelta, float speedDelta, float attackSpeedDelta, float cooldownReductionDelta)
+    {
+        MaxHealthDelta = maxHealthDelta;
+        DefenseDelta = defenseDelta;
+        AttackDelta = attackDelta;
+        RangeDelta = rangeDelta;
+        SpeedDelta = speedDelta;
+        AttackSpeedDelta = attackSpeedDelta;
+        CooldownReductionDelta = cooldownReductionDelta;
+    }
+}
+
+public class Knockback
+{
+    // Usage: Knocks back the Game Object
+    public GameObject GO;
+    public Vector3 NormalizedDirection;
+
+    public Knockback(GameObject go, Vector3 normalizedDirection)
+    {
+        GO = go;
+        NormalizedDirection = normalizedDirection;
+    }
+}
+
+public class PlayerDied { };
+
+public class PlayerWon { };
+
+public class ShowHowToPlay { };
+
+public class HideHowToPlay { };
