@@ -43,6 +43,7 @@ public class StatsComponent : MonoBehaviour
     public float GetSpeed() { return speed; }
     public float GetAttackCooldown() { return attackCooldown; }
     public float GetCooldownReduction() { return cooldownReduction; }
+    public float GetCurrentHealth() { return currentHealth; }
 
     public void OnDamage(float dealtDamage)
     {
