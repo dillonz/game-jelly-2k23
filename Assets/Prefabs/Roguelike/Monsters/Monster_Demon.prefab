@@ -212,9 +212,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7457fe61ef1285642a96832ff3646668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingMaxHealth: 8
+  StartingMaxHealth: 10
   StartingDefense: 0.01
-  StartingAttack: 6
+  StartingAttack: 7
   StartingRange: 1
   StartingSpeed: 1
   StartingAttackCooldown: 1

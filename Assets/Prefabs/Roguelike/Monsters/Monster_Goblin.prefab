@@ -153,8 +153,8 @@ MonoBehaviour:
   MaxHealthDelta: 5
   DefenseDelta: 0.05
   AttackDelta: 0
-  RangeDelta: 0.3
-  SpeedDelta: 0.3
+  RangeDelta: 0.2
+  SpeedDelta: 0.2
   AttackSpeedDelta: 0
   CooldownReductionDelta: 0
 --- !u!195 &4353876117745998492
