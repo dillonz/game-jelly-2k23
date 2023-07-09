@@ -47,3 +47,16 @@ public class AdjustStats
         CooldownReductionDelta = cooldownReductionDelta;
     }
 }
+
+public class Knockback
+{
+    // Usage: Knocks back the Game Object
+    public GameObject GO;
+    public Vector3 NormalizedDirection;
+
+    public Knockback(GameObject go, Vector3 normalizedDirection)
+    {
+        GO = go;
+        NormalizedDirection = normalizedDirection;
+    }
+}

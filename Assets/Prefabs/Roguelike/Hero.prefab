@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3088883380122212973}
   - component: {fileID: 300991511703444938}
   - component: {fileID: -4918704818891709032}
+  - component: {fileID: 6336308065459147359}
   m_Layer: 10
   m_Name: Hero
   m_TagString: Hero
@@ -223,7 +224,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2885824930769119004}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -241,7 +242,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &-4918704818891709032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,3 +256,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemToDropOnDeath: {fileID: 4522316695047090798, guid: 25cc6cad83016f44ab9ff610f4eff238, type: 3}
+--- !u!114 &6336308065459147359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2885824930769119004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190eaf91e9a11714087a15a2f268a4eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealthDelta: 0
+  DefenseDelta: 0
+  AttackDelta: 0
+  RangeDelta: 0
+  SpeedDelta: 0
+  AttackSpeedDelta: 0
+  CooldownReductionDelta: 0
