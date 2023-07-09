@@ -48,28 +48,36 @@ public class LevelGenerator : MonoBehaviour
     private void generateMap()
     {
         roomMap = new bool[Width, Height];
+        doors = new List<Tuple<Vector2Int, Vector2Int>>();
         List<Vector2Int> neighbors = new List<Vector2Int>();
-        int x = Width / 2, y = Height /2;
+        List<Vector2Int> neighborsParents = new List<Vector2Int>();
+        Vector2Int current = new Vector2Int(Width / 2, Height / 2);
 
         for (int i = 0; i < RoomsToAdd; i++)
         {
-            roomMap[x, y] = true;
-            addNeighbors(x, y, neighbors);
+            roomMap[current.x, current.y] = true;
+            addNeighbors(current, neighbors, neighborsParents);
             int rand = getRand(neighbors.Count);
-            x = neighbors[rand].x;
-            y = neighbors[rand].y;
+            current = neighbors[rand];
+            // Don't question this
+            doors.Add(Tuple.Create(current, neighborsParents[rand]));
+            doors.Add(Tuple.Create(neighborsParents[rand], current));
             neighbors.RemoveAt(rand);
+            neighborsParents.RemoveAt(rand);
         }
         
     }
 
-    private void addNeighbors(int x, int y, List<Vector2Int> neighbors)
+    private void addNeighbors(Vector2Int current, List<Vector2Int> neighbors, List<Vector2Int> neighborsParents)
     {
+        int x = current.x;
+        int y = current.y;
         if (x > 0)
         {
             if (!roomMap[x-1, y] && !neighbors.Contains(new Vector2Int(x-1, y)))
             {
                 neighbors.Add(new Vector2Int(x - 1, y));
+                neighborsParents.Add(new Vector2Int(x, y));
             }
         }
         if (x < Width -1)
@@ -77,6 +85,7 @@ public class LevelGenerator : MonoBehaviour
             if (!roomMap[x + 1, y] && !neighbors.Contains(new Vector2Int(x + 1, y)))
             {
                 neighbors.Add(new Vector2Int(x + 1, y));
+                neighborsParents.Add(new Vector2Int(x, y));
             }
         }
         if (y > 0)
@@ -84,6 +93,7 @@ public class LevelGenerator : MonoBehaviour
             if (!roomMap[x, y - 1] && !neighbors.Contains(new Vector2Int(x, y - 1)))
             {
                 neighbors.Add(new Vector2Int(x, y - 1));
+                neighborsParents.Add(new Vector2Int(x, y));
             }
         }
         if (y < Height - 1)
@@ -91,6 +101,7 @@ public class LevelGenerator : MonoBehaviour
             if (!roomMap[x, y + 1] && !neighbors.Contains(new Vector2Int(x, y + 1)))
             {
                 neighbors.Add(new Vector2Int(x, y + 1));
+                neighborsParents.Add(new Vector2Int(x, y));
             }
         }
     }
@@ -151,7 +162,8 @@ public class LevelGenerator : MonoBehaviour
                 {
                     vertWall = 1;
                 }
-                if (roomMap[x - 1, y] && roomMap[x, y])
+                var door = Tuple.Create(new Vector2Int(x - 1, y), new Vector2Int(x, y));
+                if (roomMap[x - 1, y] && roomMap[x, y] && doors.Contains(door))
                 {
                     vertWall = 2;
                 }
@@ -162,7 +174,8 @@ public class LevelGenerator : MonoBehaviour
                 {
                     horzWall = 1;
                 }
-                if (roomMap[x, y - 1] && roomMap[x, y])
+                var door = Tuple.Create(new Vector2Int(x, y - 1), new Vector2Int(x, y));
+                if (roomMap[x, y - 1] && roomMap[x, y] && doors.Contains(door))
                 {
                     horzWall = 2;
                 }
