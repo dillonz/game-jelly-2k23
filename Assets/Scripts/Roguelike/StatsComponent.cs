@@ -71,4 +71,19 @@ public class StatsComponent : MonoBehaviour
             }
         }
     }
+
+    public void OnSlowdown(float slowDownAmount, float slowDownTime)
+    {
+        if (speed - slowDownAmount > 3)
+        {
+            speed -= slowDownAmount;
+            StartCoroutine(WaitToSpeedUp(slowDownAmount, slowDownTime));
+        }
+    }
+
+    private IEnumerator WaitToSpeedUp(float slowDownAmount, float slowDownTime)
+    {
+        yield return new WaitForSeconds(slowDownTime);
+        speed += slowDownAmount;
+    }
 }

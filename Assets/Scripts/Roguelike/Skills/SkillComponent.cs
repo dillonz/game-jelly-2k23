@@ -12,6 +12,9 @@ public class SkillComponent : MonoBehaviour
     private ActiveSkill skill1;
     private ActiveSkill skill2;
 
+    private float lastUseTimeSkill1 = 0;
+    private float lastUseTimeSkill2 = 0;
+
     private List<PassiveSkill> passiveSkills;
 
     void Start()
