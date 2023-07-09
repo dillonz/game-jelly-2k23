@@ -45,14 +45,16 @@ public class LevelGenerator : MonoBehaviour
 
     public void spawnStuff()
     {
-        PlayerToMove.position = new Vector3(Width * roomWidth / 2f, Height * roomHeight / 2f - 5, -0.01f);
+        PlayerToMove.position = new Vector3(Width * roomWidth / 2f + roomWidth, Height * roomHeight / 2f - 5, -0.01f);
         Vector2Int farthest = getFarthestRoom();
-        HeroToMove.Warp(new Vector2(farthest.x * roomWidth / 2f + 3, farthest.y * roomHeight / 2f - 5));
+        HeroToMove.Warp(new Vector3(farthest.x * roomWidth + roomWidth, farthest.y * roomHeight - (roomHeight / 2), 0));
     }
 
     public Vector2Int getFarthestRoom()
     {
         Vector2Int farthest = new Vector2Int(Width / 2, Height / 2);
+        int midX = Width / 2;
+        int midY = Height / 2;
         float farthestDist = 0;
         for (int x = 0; x < Width; x++)
         {
@@ -60,7 +62,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 if (!roomMap[x, y]) continue;
 
-                float currDist = (farthest.x - x) * (farthest.x - x) + (farthest.y - y) * (farthest.y - y);
+                float currDist = (midX - x) * (midX - x) * roomWidth + (midY - y) * (midY - y) * roomHeight;
                 if (currDist > farthestDist)
                 {
                     farthestDist = currDist;
