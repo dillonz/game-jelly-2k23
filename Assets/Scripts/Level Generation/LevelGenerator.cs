@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ public class generate : MonoBehaviour
     public GameObject[] HorzDoors;
 
     private bool[,] roomMap;
-
+    private List<Tuple<Vector2Int, Vector2Int>> doors;
 
     private void Start()
     {
@@ -86,23 +87,6 @@ public class generate : MonoBehaviour
         }
     }
 
-    private void printMap()
-    {
-        string output = "";
-        output += "XXXXXXXXXXXXXXXXX\n";
-        for (int i = 0; i < Width;i++) 
-        {
-            output += "X";
-            for (int j = 0; j < Height; j++) 
-            {
-                output += roomMap[i, j] ? "O" : " ";
-            }
-            output += "X\n";
-        }
-        output += "XXXXXXXXXXXXXXXXX";
-        print(output);
-    }
-
     private void generateRooms()
     {
         for (int x = 0; x < Width; x++)
@@ -155,9 +139,13 @@ public class generate : MonoBehaviour
             }
             if (x > 0)
             {
-                if (roomMap[x-1, y])
+                if (roomMap[x - 1, y])
                 {
                     vertWall = 1;
+                }
+                if (roomMap[x - 1, y] && roomMap[x, y])
+                {
+                    vertWall = 2;
                 }
             }
             if (y > 0)
@@ -165,6 +153,10 @@ public class generate : MonoBehaviour
                 if (roomMap[x, y - 1])
                 {
                     horzWall = 1;
+                }
+                if (roomMap[x, y - 1] && roomMap[x, y])
+                {
+                    horzWall = 2;
                 }
             }
         }
@@ -180,7 +172,7 @@ public class generate : MonoBehaviour
 
     private int getRand(int range)
     {
-        return (int) Random.Range(0, range);
+        return (int) UnityEngine.Random.Range(0, range);
     }
 
 }
