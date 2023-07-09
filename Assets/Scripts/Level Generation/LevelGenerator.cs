@@ -13,10 +13,9 @@ public class LevelGenerator : MonoBehaviour
     public int RoomsToAdd;
     const int roomHeight = 12;
     const int roomWidth = 20;
-
-    public CinemachineVirtualCamera Camera;
-    public GameObject PlayerToSpawn;
-    public GameObject HeroToSpawn;
+    
+    public GameObject PlayerToMove;
+    public GameObject HeroToMove;
 
     public NavMeshSurface Surface2D;
     public GameObject[] Rooms;
@@ -32,9 +31,8 @@ public class LevelGenerator : MonoBehaviour
     {
         runGeneration();
 
-        GameObject player = Instantiate(PlayerToSpawn, new Vector3(Width * roomWidth / 2f + 5, Height * roomHeight / 2f + 5, 0), new Quaternion());
-        Instantiate(HeroToSpawn, new Vector3(Width * roomWidth / 2f + 10, Height * roomHeight / 2f + 10, 0), new Quaternion());
-        Camera.Follow = player.transform;
+        PlayerToMove.transform.position = new Vector3(Width * roomWidth / 2f + 5, Height * roomHeight / 2f - 5, 0);
+        HeroToMove.transform.position = new Vector3(Width * roomWidth / 2f + 10, Height * roomHeight / 2f - 10, 0);
     }
 
     public void runGeneration()

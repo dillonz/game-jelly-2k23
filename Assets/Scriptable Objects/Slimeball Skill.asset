@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Slimeball Skill
   m_EditorClassIdentifier: 
   CooldownTime: 0
-  slimeballToSpawn: {fileID: 0}
+  UIImage: {fileID: 0}
+  slimeballToSpawn: {fileID: 1691194605416272369, guid: 1ce903a0a8838f240b4665e6511f258d, type: 3}
