@@ -118,7 +118,7 @@ public class EnemyAIComponent : MonoBehaviour
                     if (monster != null)
                     {
                         var path = new NavMeshPath();
-                        if (_navMeshAgent.CalculatePath(_player.transform.position, path))
+                        if (_navMeshAgent.CalculatePath(monster.transform.position, path))
                         {
                             float distanceToMonster = GetPathLength(path);
                             if (distanceToMonster < _distanceToClosestMonster)
@@ -250,6 +250,7 @@ public class EnemyAIComponent : MonoBehaviour
         if (_closestMonster == null)
         {
             _aiState = AIState.Idle;
+            _distanceToClosestMonster = 1000f;
         }
         else
         {
@@ -257,7 +258,7 @@ public class EnemyAIComponent : MonoBehaviour
             _navMeshAgent.speed = _statsComponent.GetSpeed();
         }
 
-        if (_navMeshAgent.remainingDistance < 2)
+        if (_navMeshAgent.remainingDistance < 2.5)
         {
             _enemyAttack.TryAttack();
         }

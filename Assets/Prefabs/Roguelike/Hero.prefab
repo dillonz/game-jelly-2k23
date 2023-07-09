@@ -172,8 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingMaxHealth: 175
-  StartingDefense: 0.3
-  StartingAttack: 5
+  StartingDefense: 0.5
+  StartingAttack: 7
   StartingRange: 1
   StartingSpeed: 4
   StartingAttackCooldown: 1
