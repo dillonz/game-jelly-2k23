@@ -21,8 +21,16 @@ public class SetImageToSkill : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Sprite uiImage = SkillNumber == 1 ? skills.GetSkill1().UIImage : skills.GetSkill2().UIImage;
-        if (img.sprite != uiImage)
+        Sprite uiImage = null;
+        if (SkillNumber == 1 && skills.GetSkill1() != null)
+        {
+            uiImage = skills.GetSkill1().UIImage;
+        }
+        else if (SkillNumber == 2 && skills.GetSkill2() != null)
+        {
+            uiImage = skills.GetSkill2().UIImage;
+        }
+        if (uiImage != null && img.sprite != uiImage)
         {
             img.sprite = uiImage;
             Debug.Log(img.sprite);

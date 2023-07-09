@@ -49,10 +49,16 @@ public class AnimateRefillOnCooldown : MonoBehaviour
         switch (SkillNumber)
         {
             case 1:
-                cooldownTime = skills.GetSkill1().CooldownTime;
+                if (skills.GetSkill1() != null)
+                {
+                    cooldownTime = skills.GetSkill1().CooldownTime;
+                }
                 break;
             case 2:
-                cooldownTime = skills.GetSkill2().CooldownTime;
+                if (skills.GetSkill2() != null)
+                {
+                    cooldownTime = skills.GetSkill2().CooldownTime;
+                }
                 break;
             default:
                 cooldownTime = stats.GetAttackCooldown();

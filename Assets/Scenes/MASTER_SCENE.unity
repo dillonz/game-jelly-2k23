@@ -240,6 +240,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1085454386337923933, guid: 4c2d9d140c2e8664e8a125cbad59b012, type: 3}
+      propertyPath: HelpText
+      value: 
+      objectReference: {fileID: 1191990861}
     - target: {fileID: 1363220068894136826, guid: 4c2d9d140c2e8664e8a125cbad59b012, type: 3}
       propertyPath: m_Name
       value: Player
@@ -630,6 +634,11 @@ MonoBehaviour:
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1191990861 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8609712140737137837, guid: f5503baeb447e4846b95856f48b0ea34, type: 3}
+  m_PrefabInstance: {fileID: 324018672}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1250718773
 PrefabInstance:
   m_ObjectHideFlags: 0

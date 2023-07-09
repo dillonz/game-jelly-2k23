@@ -56,7 +56,7 @@ public class PlayerPickupComponent : MonoBehaviour
             if (!found)
             {
                 if (HelpText != null)
-                {
+                {   
                     HelpText.SetActive(false);
                 }
             }
