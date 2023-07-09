@@ -18,8 +18,6 @@ public class LevelGenerator : MonoBehaviour
     public Transform PlayerToMove;
     public NavMeshAgent HeroToMove;
 
-    public GameObject MonsterToSpawn;
-
     public NavMeshSurface Surface2D;
     public GameObject[] Rooms;
     public GameObject[] VertWalls;
@@ -33,11 +31,7 @@ public class LevelGenerator : MonoBehaviour
     private void Start()
     {
         runGeneration();
-
-        PlayerToMove.position = (new Vector2(Width * roomWidth / 2f, Height * roomHeight / 2f - 5));
-        HeroToMove.Warp(new Vector2(Width * roomWidth / 2f + 3, Height * roomHeight / 2f - 5));
-        Instantiate(MonsterToSpawn, new Vector2(Width * roomWidth / 2f - 2, Height * roomHeight / 2f - 5),
-            new Quaternion());
+        spawnStuff();
     }
 
     public void runGeneration()
@@ -47,6 +41,34 @@ public class LevelGenerator : MonoBehaviour
         generateWalls();
 
         Surface2D.BuildNavMesh();
+    }
+
+    public void spawnStuff()
+    {
+        PlayerToMove.position = (new Vector2(Width * roomWidth / 2f, Height * roomHeight / 2f - 5));
+        Vector2Int farthest = getFarthestRoom();
+        HeroToMove.Warp(new Vector2(farthest.x * roomWidth / 2f + 3, farthest.y * roomHeight / 2f - 5));
+    }
+
+    public Vector2Int getFarthestRoom()
+    {
+        Vector2Int farthest = new Vector2Int(Width / 2, Height / 2);
+        float farthestDist = 0;
+        for (int x = 0; x < Width; x++)
+        {
+            for (int y = 0; y < Height; y++)
+            {
+                if (!roomMap[x, y]) continue;
+
+                float currDist = (farthest.x - x) * (farthest.x - x) + (farthest.y - y) * (farthest.y - y);
+                if (currDist > farthestDist)
+                {
+                    farthestDist = currDist;
+                    farthest = new Vector2Int(x, y);
+                }
+            }
+        }
+        return farthest;
     }
 
     private void generateMap()
