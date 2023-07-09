@@ -530,6 +530,7 @@ MonoBehaviour:
   RoomsToAdd: 25
   PlayerToMove: {fileID: 1025035136}
   HeroToMove: {fileID: 575558103}
+  MonsterToSpawn: {fileID: 4545607084501747834, guid: 9262f7b14966eea4887043af0998a2b5, type: 3}
   Surface2D: {fileID: 1038746762}
   Rooms:
   - {fileID: 3438667469567175165, guid: 4e2498c200b83544cbdd0f785ea94daa, type: 3}

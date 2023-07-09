@@ -48,12 +48,12 @@ public class SkillComponent : MonoBehaviour
         if (pos == 0)
         {
             skill1 = (ActiveSkill)skill.Clone(this.gameObject);
-            lastUseTimeSkill1 = Time.time;
+            lastUseTimeSkill1 = 0;
         }
         else if (pos == 1)
         {
             skill2 = (ActiveSkill)skill.Clone(this.gameObject);
-            lastUseTimeSkill2 = Time.time;
+            lastUseTimeSkill2 = 0;
         }
     }
 
@@ -69,13 +69,13 @@ public class SkillComponent : MonoBehaviour
             if (skill1 != null && (lastUseTimeSkill1 + skill1.CooldownTime < Time.time) && Input.GetButtonDown("Fire2"))
             {
                 skill1.OnUse();
-                lastUseTimeSkill1 = 0;
+                lastUseTimeSkill1 = Time.time;
             }
 
             if (skill2 != null && (lastUseTimeSkill2 + skill2.CooldownTime < Time.time) && Input.GetButtonDown("Fire3"))
             {
                 skill2.OnUse();
-                lastUseTimeSkill2 = 0;
+                lastUseTimeSkill2 = Time.time;
             }
         }
 

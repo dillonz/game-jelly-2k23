@@ -29,7 +29,7 @@ public class DroppedItemComponent : MonoBehaviour
             }
             else if (Input.GetButtonDown("Fire3"))
             {
-                playerTryingToSwitch.AddActiveSkill(0, (ActiveSkill)SkillGiven);
+                playerTryingToSwitch.AddActiveSkill(1, (ActiveSkill)SkillGiven);
                 playerTryingToSwitch.BlockSkillUsage = false;
                 acceptingInput = false;
                 Destroy(gameObject);

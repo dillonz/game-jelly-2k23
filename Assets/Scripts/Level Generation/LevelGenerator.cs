@@ -18,6 +18,8 @@ public class LevelGenerator : MonoBehaviour
     public Transform PlayerToMove;
     public NavMeshAgent HeroToMove;
 
+    public GameObject MonsterToSpawn;
+
     public NavMeshSurface Surface2D;
     public GameObject[] Rooms;
     public GameObject[] VertWalls;
@@ -34,6 +36,8 @@ public class LevelGenerator : MonoBehaviour
 
         PlayerToMove.position = (new Vector2(Width * roomWidth / 2f, Height * roomHeight / 2f - 5));
         HeroToMove.Warp(new Vector2(Width * roomWidth / 2f + 3, Height * roomHeight / 2f - 5));
+        Instantiate(MonsterToSpawn, new Vector2(Width * roomWidth / 2f - 2, Height * roomHeight / 2f - 5),
+            new Quaternion());
     }
 
     public void runGeneration()
