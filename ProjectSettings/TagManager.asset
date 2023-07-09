@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hero
   - Monster
+  - DroppedItems
   layers:
   - Default
   - TransparentFX
