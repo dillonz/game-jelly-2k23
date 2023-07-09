@@ -74,7 +74,7 @@ public class StatsComponent : MonoBehaviour
 
     public void OnSlowdown(float slowDownAmount, float slowDownTime)
     {
-        if (speed - slowDownAmount > 3)
+        if (speed - slowDownAmount > 2.99)
         {
             speed -= slowDownAmount;
             StartCoroutine(WaitToSpeedUp(slowDownAmount, slowDownTime));

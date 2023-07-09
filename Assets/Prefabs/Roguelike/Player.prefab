@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86c4e09cbd7b3c42aca66fc34e575bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestSkill: {fileID: 11400000, guid: a5b37498b55b1294387e08a5ee75faa7, type: 2}
+  TestSkill: {fileID: 11400000, guid: 4b53d0c9e487c5c48b5ded1a090ef505, type: 2}
 --- !u!114 &6729559356832055585
 MonoBehaviour:
   m_ObjectHideFlags: 0
