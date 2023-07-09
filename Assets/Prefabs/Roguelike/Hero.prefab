@@ -177,6 +177,7 @@ MonoBehaviour:
   StartingSpeed: 4
   StartingAttackCooldown: 0
   StartingCooldownReduction: 0
+  IsHero: 1
 --- !u!195 &6215773042190633839
 NavMeshAgent:
   m_ObjectHideFlags: 0
