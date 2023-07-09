@@ -6,24 +6,19 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class SkillComponent : MonoBehaviour
 {
-    public ActiveSkill TestSkill;
-
-    [NonSerialized]
-    public bool BlockSkillUsage = false;
-
     private ActiveSkill skill1;
     private ActiveSkill skill2;
 
     private float lastUseTimeSkill1 = 0;
     private float lastUseTimeSkill2 = 0;
 
+    private uint oldestUpdatedSkill = 0;
+
     private List<PassiveSkill> passiveSkills;
 
     void Start()
     {
         passiveSkills = new List<PassiveSkill>();
-
-        AddActiveSkill(0, TestSkill);
     }
 
     public uint GetOpenActiveSkillIndex()
@@ -41,19 +36,19 @@ public class SkillComponent : MonoBehaviour
         return 1000;
     }
 
-    public void AddActiveSkill(uint pos, ActiveSkill skill)
-    {
-        Debug.Assert(pos < 2);
-
-        if (pos == 0)
+    public void UpdateActiveSkill(ActiveSkill skill)
+    { 
+        if (oldestUpdatedSkill == 0)
         {
             skill1 = (ActiveSkill)skill.Clone(this.gameObject);
             lastUseTimeSkill1 = 0;
+            oldestUpdatedSkill = 1;
         }
-        else if (pos == 1)
+        else if (oldestUpdatedSkill == 1)
         {
             skill2 = (ActiveSkill)skill.Clone(this.gameObject);
             lastUseTimeSkill2 = 0;
+            oldestUpdatedSkill = 0;
         }
     }
 
@@ -64,19 +59,16 @@ public class SkillComponent : MonoBehaviour
 
     void Update()
     {
-        if (!BlockSkillUsage)
+        if (skill1 != null && (lastUseTimeSkill1 + skill1.CooldownTime < Time.time) && Input.GetButtonDown("Fire2"))
         {
-            if (skill1 != null && (lastUseTimeSkill1 + skill1.CooldownTime < Time.time) && Input.GetButtonDown("Fire2"))
-            {
-                skill1.OnUse();
-                lastUseTimeSkill1 = Time.time;
-            }
+            skill1.OnUse();
+            lastUseTimeSkill1 = Time.time;
+        }
 
-            if (skill2 != null && (lastUseTimeSkill2 + skill2.CooldownTime < Time.time) && Input.GetButtonDown("Fire3"))
-            {
-                skill2.OnUse();
-                lastUseTimeSkill2 = Time.time;
-            }
+        if (skill2 != null && (lastUseTimeSkill2 + skill2.CooldownTime < Time.time) && Input.GetButtonDown("Fire3"))
+        {
+            skill2.OnUse();
+            lastUseTimeSkill2 = Time.time;
         }
 
         foreach (PassiveSkill skill in passiveSkills)
