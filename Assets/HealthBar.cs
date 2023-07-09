@@ -20,9 +20,5 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         img.fillAmount = stats.GetCurrentHealth() / stats.GetMaxHealth();
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            stats.OnDamage(1);
-        }
     }
 }
