@@ -1,30 +1,29 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class FadeInOnDeath : MonoBehaviour
+public class FadeInOnWin : MonoBehaviour
 {
     public Image Img;
     public GameObject RestartText;
     public float fadeTime;
 
-    Subscription<PlayerDied> deathSub;
-    bool playerDead = false;
-    float timeSinceDeath = 0f;
+    Subscription<PlayerWon> winSub;
+    bool playerWon = false;
+    float timeSinceWin = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        deathSub = EventBus.Subscribe<PlayerDied>(OnPlayerDeath);     
+        winSub = EventBus.Subscribe<PlayerWon>(OnPlayerWin);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerDead)
+        if (playerWon)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -35,20 +34,20 @@ public class FadeInOnDeath : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
 
-            timeSinceDeath += Time.unscaledDeltaTime;
+            timeSinceWin += Time.unscaledDeltaTime;
 
             var tempColor = Img.color;
-            tempColor.a = Mathf.Lerp(0, 1f, timeSinceDeath / fadeTime);
+            tempColor.a = Mathf.Lerp(0, 1f, timeSinceWin / fadeTime);
             Img.color = tempColor;
         }
-        if (timeSinceDeath >= fadeTime && !RestartText.activeSelf)
+        if (timeSinceWin >= fadeTime && !RestartText.activeSelf)
         {
             RestartText.SetActive(true);
         }
     }
 
-    void OnPlayerDeath(PlayerDied e)
+    void OnPlayerWin(PlayerWon e)
     {
-        playerDead = true;
+        playerWon = true;
     }
 }

@@ -12,6 +12,7 @@ public class StatsComponent : MonoBehaviour
     public float StartingSpeed;
     public float StartingAttackCooldown;
     public float StartingCooldownReduction;
+    public bool IsHero;
 
     protected float maxHealth;
     protected float defense;
@@ -87,6 +88,7 @@ public class StatsComponent : MonoBehaviour
 
             if (!isPlayer)
             {
+                if (IsHero) { EventBus.Publish(new PlayerWon()); }
                 Destroy(gameObject);
             }
             else
