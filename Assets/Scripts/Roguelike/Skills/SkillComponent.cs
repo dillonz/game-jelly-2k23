@@ -69,13 +69,13 @@ public class SkillComponent : MonoBehaviour
             if (skill1 != null && (lastUseTimeSkill1 + skill1.CooldownTime < Time.time) && Input.GetButtonDown("Fire2"))
             {
                 skill1.OnUse();
-                lastUseTimeSkill1 = Time.time;
+                lastUseTimeSkill1 = 0;
             }
 
             if (skill2 != null && (lastUseTimeSkill2 + skill2.CooldownTime < Time.time) && Input.GetButtonDown("Fire3"))
             {
                 skill2.OnUse();
-                lastUseTimeSkill2 = Time.time;
+                lastUseTimeSkill2 = 0;
             }
         }
 

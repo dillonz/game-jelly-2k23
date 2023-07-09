@@ -5,6 +5,7 @@ using System.Linq;
 using Cinemachine;
 using NavMeshPlus.Components;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -14,8 +15,8 @@ public class LevelGenerator : MonoBehaviour
     const int roomHeight = 12;
     const int roomWidth = 20;
     
-    public GameObject PlayerToMove;
-    public GameObject HeroToMove;
+    public Transform PlayerToMove;
+    public NavMeshAgent HeroToMove;
 
     public NavMeshSurface Surface2D;
     public GameObject[] Rooms;
@@ -31,8 +32,8 @@ public class LevelGenerator : MonoBehaviour
     {
         runGeneration();
 
-        PlayerToMove.transform.position = new Vector3(Width * roomWidth / 2f + 5, Height * roomHeight / 2f - 5, 0);
-        HeroToMove.transform.position = new Vector3(Width * roomWidth / 2f + 10, Height * roomHeight / 2f - 10, 0);
+        PlayerToMove.position = (new Vector2(Width * roomWidth / 2f, Height * roomHeight / 2f - 5));
+        HeroToMove.Warp(new Vector2(Width * roomWidth / 2f + 3, Height * roomHeight / 2f - 5));
     }
 
     public void runGeneration()
