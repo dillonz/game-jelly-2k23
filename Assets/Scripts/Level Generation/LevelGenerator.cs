@@ -5,7 +5,7 @@ using System.Linq;
 using NavMeshPlus.Components;
 using UnityEngine;
 
-public class generate : MonoBehaviour
+public class LevelGenerator : MonoBehaviour
 {
     public int Width;
     public int Height;
