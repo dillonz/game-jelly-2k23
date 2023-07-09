@@ -367,22 +367,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2922772426321599228, guid: 4c2d9d140c2e8664e8a125cbad59b012, type: 3}
-      propertyPath: StartingRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2922772426321599228, guid: 4c2d9d140c2e8664e8a125cbad59b012, type: 3}
-      propertyPath: StartingDefense
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2922772426321599228, guid: 4c2d9d140c2e8664e8a125cbad59b012, type: 3}
-      propertyPath: StartingAttackCooldown
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6729559356832055585, guid: 4c2d9d140c2e8664e8a125cbad59b012, type: 3}
-      propertyPath: FreezeTime
-      value: 0.15
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

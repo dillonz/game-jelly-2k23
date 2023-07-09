@@ -173,7 +173,7 @@ MonoBehaviour:
   StartingAttack: 5
   StartingRange: 1
   StartingSpeed: 4
-  StartingAttackSpeed: 1
+  StartingAttackCooldown: 0
   StartingCooldownReduction: 0
 --- !u!195 &6215773042190633839
 NavMeshAgent:
