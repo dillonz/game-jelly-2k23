@@ -110,4 +110,15 @@ public class StatsComponent : MonoBehaviour
         yield return new WaitForSeconds(slowDownTime);
         speed += slowDownAmount;
     }
+
+    public void AdjustStats(AdjustStats stats)
+    {
+        maxHealth += stats.MaxHealthDelta;
+        currentHealth += stats.MaxHealthDelta * 2;
+        attack += stats.AttackDelta;
+        defense += stats.DefenseDelta;
+        speed += stats.SpeedDelta;
+        range += stats.RangeDelta;
+        attackCooldown += stats.AttackSpeedDelta;
+    }
 }

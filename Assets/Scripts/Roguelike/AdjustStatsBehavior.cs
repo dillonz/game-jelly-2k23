@@ -14,6 +14,15 @@ public class AdjustStatsBehavior : MonoBehaviour
 
     public void AdjustPlayerStats()
     {
-        EventBus.Publish(new AdjustStats(MaxHealthDelta, DefenseDelta, AttackDelta, RangeDelta, SpeedDelta, AttackSpeedDelta, CooldownReductionDelta));
+        GameObject go = GameObject.FindGameObjectWithTag("Player");
+        if (go != null)
+        {
+            var statsComponent = go.GetComponent<StatsComponent>();
+            if (statsComponent != null)
+            {
+                statsComponent.AdjustStats(new AdjustStats(MaxHealthDelta, DefenseDelta, AttackDelta, RangeDelta,
+                    SpeedDelta, AttackSpeedDelta, CooldownReductionDelta));
+            }
+        }
     }
 }

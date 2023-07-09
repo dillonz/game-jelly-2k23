@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingMaxHealth: 100
-  StartingDefense: 0
+  StartingDefense: 0.1
   StartingAttack: 5
   StartingRange: 1
   StartingSpeed: 5
@@ -229,7 +229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86c4e09cbd7b3c42aca66fc34e575bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestSkill: {fileID: 11400000, guid: b7710a5baf08d0a49b1844049c9b122f, type: 2}
 --- !u!114 &6729559356832055585
 MonoBehaviour:
   m_ObjectHideFlags: 0

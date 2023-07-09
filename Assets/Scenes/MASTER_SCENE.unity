@@ -437,6 +437,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
+    - target: {fileID: 3088883380122212973, guid: 45fdadef56294a04aa33b7c72e29b440, type: 3}
+      propertyPath: DistanceToTargetMonster
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7308934593965735891, guid: 45fdadef56294a04aa33b7c72e29b440, type: 3}
       propertyPath: m_RootOrder
       value: 6

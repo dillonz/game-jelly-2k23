@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 9021773806674977716}
   - component: {fileID: 1111964193395520442}
   - component: {fileID: 83365373807149787}
+  - component: {fileID: 4190672987382190205}
   m_Layer: 10
   m_Name: Monster_Demon
   m_TagString: Monster
@@ -151,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealthDelta: 3
   DefenseDelta: 0
-  AttackDelta: 0
+  AttackDelta: 0.5
   RangeDelta: 0
   SpeedDelta: 0
   AttackSpeedDelta: 0
@@ -216,7 +217,7 @@ MonoBehaviour:
   StartingAttack: 5
   StartingRange: 1
   StartingSpeed: 1
-  StartingAttackCooldown: 0
+  StartingAttackCooldown: 1
   StartingCooldownReduction: 0
 --- !u!114 &9021773806674977716
 MonoBehaviour:
@@ -231,8 +232,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AIType: 0
-  DistanceToTargetHero: 40
-  DistanceToTargetPlayer: 40
+  DistanceToTargetHero: 15
+  DistanceToTargetPlayer: 15
   DistanceToTargetMonster: 40
   MaxRandomMoveDistance: 10
 --- !u!50 &1111964193395520442
@@ -275,3 +276,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemToDropOnDeath: {fileID: 4522316695047090798, guid: d6553eca9aea6d748b866bd87759d86d, type: 3}
+--- !u!114 &4190672987382190205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4545607084501747834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5376b5ca37ea7b04eb92420a89631f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackObject: {fileID: 2095411158981030204, guid: 0dabf683594816341997283ba5d6ded4, type: 3}
