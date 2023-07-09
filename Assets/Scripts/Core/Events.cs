@@ -64,3 +64,7 @@ public class Knockback
 public class PlayerDied { };
 
 public class PlayerWon { };
+
+public class ShowHowToPlay { };
+
+public class HideHowToPlay { };

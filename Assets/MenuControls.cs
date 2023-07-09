@@ -15,4 +15,9 @@ public class MenuButtons : MonoBehaviour
         Debug.Log("Exiting Game...");
         Application.Quit();
     }
+
+    public void HowToPlay()
+    {
+        EventBus.Publish(new ShowHowToPlay());
+    }
 }
