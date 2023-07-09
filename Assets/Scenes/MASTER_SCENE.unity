@@ -718,6 +718,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4086780908804621632, guid: 977debfde2f3aee49b8296237009100b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5133444259361497514, guid: 977debfde2f3aee49b8296237009100b, type: 3}
       propertyPath: m_Name
       value: PlayerDeathScreen
