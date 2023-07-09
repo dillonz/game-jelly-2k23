@@ -21,7 +21,7 @@ public enum AIState
 }
 
 
-[RequireComponent(typeof(NavMeshAgent), typeof(StatsComponent))]
+[RequireComponent(typeof(NavMeshAgent), typeof(StatsComponent), typeof(EnemyAttack))]
 public class EnemyAIComponent : MonoBehaviour
 {
     public AIType AIType;
@@ -33,6 +33,7 @@ public class EnemyAIComponent : MonoBehaviour
 
     private NavMeshAgent _navMeshAgent;
     private StatsComponent _statsComponent;
+    private EnemyAttack _enemyAttack;
 
     private AIState _aiState = AIState.Idle;
     private GameObject _player;
@@ -48,6 +49,7 @@ public class EnemyAIComponent : MonoBehaviour
     {
         _statsComponent = GetComponent<StatsComponent>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _enemyAttack = GetComponent<EnemyAttack>();
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis = false;
 
@@ -73,6 +75,20 @@ public class EnemyAIComponent : MonoBehaviour
     {
         for (;;)
         {
+            GameObject[] playerTaggedObjects = GameObject.FindGameObjectsWithTag("Player");
+            if (playerTaggedObjects.Length > 0)
+            {
+                _player = playerTaggedObjects[0];
+            }
+
+            GameObject[] heroTaggedObjects = GameObject.FindGameObjectsWithTag("Hero");
+            if (heroTaggedObjects.Length > 0)
+            {
+                _hero = heroTaggedObjects[0];
+            }
+
+            _monsters = GameObject.FindGameObjectsWithTag("Monster");
+
             bool shouldCheckHero = AIType == AIType.Monster && _hero != null;
             bool shouldCheckPlayer = (AIType == AIType.Monster || AIType == AIType.Hero) && _player != null;
             bool shouldCheckMonsters = AIType == AIType.Hero && _monsters.Length > 0;
@@ -204,6 +220,11 @@ public class EnemyAIComponent : MonoBehaviour
             _navMeshAgent.destination = _hero.transform.position;
             _navMeshAgent.speed = _statsComponent.GetSpeed();
         }
+
+        if (_navMeshAgent.remainingDistance < 2)
+        {
+            _enemyAttack.TryAttack();
+        }
     }
 
     private void TargetingPlayerStateThink()
@@ -217,6 +238,11 @@ public class EnemyAIComponent : MonoBehaviour
             _navMeshAgent.destination = _player.transform.position;
             _navMeshAgent.speed = _statsComponent.GetSpeed();
         }
+
+        if (_navMeshAgent.remainingDistance < 2)
+        {
+            _enemyAttack.TryAttack();
+        }
     }
 
     private void TargetingMonsterStateThink()
@@ -229,6 +255,11 @@ public class EnemyAIComponent : MonoBehaviour
         {
             _navMeshAgent.destination = _closestMonster.transform.position;
             _navMeshAgent.speed = _statsComponent.GetSpeed();
+        }
+
+        if (_navMeshAgent.remainingDistance < 2)
+        {
+            _enemyAttack.TryAttack();
         }
     }
     
