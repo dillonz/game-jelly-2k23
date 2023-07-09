@@ -108,7 +108,7 @@ MonoBehaviour:
   StartingAttack: 5
   StartingRange: 1
   StartingSpeed: 5
-  StartingAttackCooldown: 1
+  StartingAttackCooldown: 0.5
   StartingCooldownReduction: 0
 --- !u!61 &1839801599670451981
 BoxCollider2D:
@@ -240,5 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4f55ce30854d1479cb4eeb8d9ba52f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FreezeTime: 0.25
   Animator: {fileID: 1745979729322778911}
   AttackObject: {fileID: 2095411158981030204, guid: 0dabf683594816341997283ba5d6ded4, type: 3}

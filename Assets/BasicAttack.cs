@@ -30,8 +30,9 @@ public class BasicAttack : MonoBehaviour
 
             canAttack = false;
 
-            GameObject go = Instantiate(AttackObject, transform.position + (Vector3)playerMovement.NormalDirection, transform.rotation);
+            GameObject go = Instantiate(AttackObject, transform.position + (Vector3)(playerMovement.NormalDirection * stats.GetRange() / 2 + playerMovement.NormalDirection / 4), transform.rotation);
             go.GetComponent<DoDamageOnStart>().Stats = stats;
+            go.transform.localScale = Vector3.one * stats.GetRange();
             if (playerMovement.FacingLeft) { go.GetComponent<SpriteRenderer>().flipX = true; };
             playerMovement.StopMoving();
             playerMovement.enabled = false;
