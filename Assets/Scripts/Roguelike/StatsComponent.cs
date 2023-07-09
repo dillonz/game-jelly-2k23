@@ -10,7 +10,7 @@ public class StatsComponent : MonoBehaviour
     public float StartingAttack;
     public float StartingRange;
     public float StartingSpeed;
-    public float StartingAttackSpeed;
+    public float StartingAttackCooldown;
     public float StartingCooldownReduction;
 
     protected int maxHealth;
@@ -18,7 +18,7 @@ public class StatsComponent : MonoBehaviour
     protected float attack;
     protected float range;
     protected float speed;
-    protected float attackSpeed;
+    protected float attackCooldown;
     protected float cooldownReduction;
 
     protected int currentHealth;
@@ -30,7 +30,7 @@ public class StatsComponent : MonoBehaviour
         attack = StartingAttack;
         range = StartingRange;
         speed = StartingSpeed;
-        attackSpeed = StartingAttackSpeed;
+        attackCooldown = StartingAttackCooldown;
         cooldownReduction = StartingCooldownReduction;
 
         currentHealth = maxHealth;
@@ -41,7 +41,7 @@ public class StatsComponent : MonoBehaviour
     public float GetAttack() { return attack; }
     public float GetRange() { return range; }  
     public float GetSpeed() { return speed; }
-    public float GetAttackSpeed() { return attackSpeed; }
+    public float GetAttackCooldown() { return attackCooldown; }
     public float GetCooldownReduction() { return cooldownReduction; }
 
     public void OnDamage(float dealtDamage)

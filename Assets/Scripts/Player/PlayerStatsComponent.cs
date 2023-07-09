@@ -21,8 +21,8 @@ public class PlayerStatsComponent : StatsComponent
         if (defense < 1) { defense = 1; }
         attack -= e.AttackDelta;
         if (attack < 1) { attack = 1; }
-        attackSpeed -= e.AttackSpeedDelta;
-        if (attackSpeed < 1) { attackSpeed = 1; }
+        attackCooldown -= e.AttackSpeedDelta;
+        if (attackCooldown < 0) { attackCooldown = 0; }
         range -= e.RangeDelta;
         if (range < 1) { range = 1; }
         speed -= e.SpeedDelta;

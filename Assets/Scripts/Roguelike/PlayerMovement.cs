@@ -24,17 +24,24 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        XMove = Input.GetAxisRaw("Horizontal");
-        YMove = Input.GetAxisRaw("Vertical");
+        XMove = Input.GetAxisRaw("Horizontal") * stats.GetSpeed();
+        YMove = Input.GetAxisRaw("Vertical") * stats.GetSpeed();
 
-        NormalDirection = new Vector2(XMove, YMove).normalized;
+        if (XMove != 0 || YMove != 0) NormalDirection = new Vector2(XMove, YMove).normalized;
 
-        rigidBody2D.velocity = NormalDirection * stats.GetSpeed();
+        rigidBody2D.velocity = new Vector2(XMove, YMove);
 
         if (XMove != 0)
         {
             FacingLeft = XMove > 0;
             spriteRenderer.flipX = FacingLeft;
         }
+    }
+
+    public void StopMoving()
+    {
+        XMove = 0; YMove = 0;
+
+        rigidBody2D.velocity = new Vector2(0, 0);
     }
 }
