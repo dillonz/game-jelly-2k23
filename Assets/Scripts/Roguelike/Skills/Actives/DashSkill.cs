@@ -11,6 +11,8 @@ public class DashSkill : ActiveSkill
         DashSkill newSkill = ScriptableObject.CreateInstance<DashSkill>();
         newSkill.distance = distance;
         newSkill.owner = owner;
+        newSkill.UIImage = UIImage;
+        newSkill.CooldownTime = CooldownTime;
 
         return newSkill;
     }

@@ -13,6 +13,8 @@ public class FireballSkill : ActiveSkill
         FireballSkill newSkill = ScriptableObject.CreateInstance<FireballSkill>(); ;
         newSkill.fireballToSpawn = fireballToSpawn;
         newSkill.owner = owner;
+        newSkill.UIImage = UIImage;
+        newSkill.CooldownTime = CooldownTime;
 
         return newSkill;
     }

@@ -8,6 +8,8 @@ public class InvincibilitySkill : ActiveSkill
     {
         InvincibilitySkill newSkill = ScriptableObject.CreateInstance<InvincibilitySkill>();
         newSkill.owner = owner;
+        newSkill.UIImage = UIImage;
+        newSkill.CooldownTime = CooldownTime;
 
         return newSkill;
     }

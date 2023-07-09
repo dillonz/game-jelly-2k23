@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af52de60df3c1d545bc32fe8636dfc03, type: 3}
   m_Name: Fireball Skill
   m_EditorClassIdentifier: 
+  CooldownTime: 1
+  UIImage: {fileID: 1805824918, guid: 362bf5c7cbd22b3439d08e22c92a587d, type: 3}
   fireballToSpawn: {fileID: 1691194605416272369, guid: 35e81899ea0a7ac4680b4f0a0cea2bf1, type: 3}

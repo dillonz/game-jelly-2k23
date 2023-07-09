@@ -11,6 +11,8 @@ public class SlimeballSkill : ActiveSkill
         SlimeballSkill newSkill = ScriptableObject.CreateInstance<SlimeballSkill>();
         newSkill.prefabToSpawn = prefabToSpawn;
         newSkill.owner = owner;
+        newSkill.UIImage = UIImage;
+        newSkill.CooldownTime = CooldownTime;
 
         return newSkill;
     }

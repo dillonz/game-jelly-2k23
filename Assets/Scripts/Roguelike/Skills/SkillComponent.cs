@@ -82,4 +82,7 @@ public class SkillComponent : MonoBehaviour
             skill.OnUpdate();
         }
     }
+    
+    public ActiveSkill GetSkill1() { return skill1; }
+    public ActiveSkill GetSkill2() { return skill2; }
 }
