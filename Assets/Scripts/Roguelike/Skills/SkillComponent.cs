@@ -1,9 +1,13 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillComponent : MonoBehaviour
 {
     public ActiveSkill TestSkill;
+
+    [NonSerialized]
+    public bool BlockSkillUsage = false;
 
     private ActiveSkill skill1;
     private ActiveSkill skill2;
@@ -15,6 +19,21 @@ public class SkillComponent : MonoBehaviour
         passiveSkills = new List<PassiveSkill>();
 
         AddActiveSkill(0, TestSkill);
+    }
+
+    public uint GetOpenActiveSkillIndex()
+    {
+        if (skill1 == null)
+        {
+            return 0;
+        }
+
+        if (skill2 == null)
+        {
+            return 1;
+        }
+
+        return 1000;
     }
 
     public void AddActiveSkill(uint pos, ActiveSkill skill)
@@ -38,9 +57,17 @@ public class SkillComponent : MonoBehaviour
 
     void Update()
     {
-        if (skill1 != null && Input.GetButtonDown("Fire2"))
+        if (!BlockSkillUsage)
         {
-            skill1.OnUse();
+            if (skill1 != null && Input.GetButtonDown("Fire2"))
+            {
+                skill1.OnUse();
+            }
+
+            if (skill2 != null && Input.GetButtonDown("Fire3"))
+            {
+                skill2.OnUse();
+            }
         }
 
         foreach (PassiveSkill skill in passiveSkills)

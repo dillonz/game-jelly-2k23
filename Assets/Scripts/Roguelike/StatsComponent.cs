@@ -59,6 +59,12 @@ public class StatsComponent : MonoBehaviour
                 adjustStatsBehavior.AdjustPlayerStats();
             }
 
+            var dropItemsComponent = GetComponent<DropItemsComponent>();
+            if (dropItemsComponent != null)
+            {
+                dropItemsComponent.OnDeath();
+            }
+
             if (!isPlayer)
             {
                 Destroy(gameObject);
