@@ -530,12 +530,15 @@ MonoBehaviour:
   RoomsToAdd: 25
   PlayerToMove: {fileID: 1025035136}
   HeroToMove: {fileID: 575558103}
-  MonsterToSpawn: {fileID: 4545607084501747834, guid: 9262f7b14966eea4887043af0998a2b5, type: 3}
   Surface2D: {fileID: 1038746762}
   Rooms:
   - {fileID: 3438667469567175165, guid: 4e2498c200b83544cbdd0f785ea94daa, type: 3}
+  - {fileID: 3438667469567175165, guid: 2e4cf41707e353543a3cd83b4a659421, type: 3}
+  - {fileID: 3438667469567175165, guid: 2f4029dc775b0424b903446dcb8d994a, type: 3}
   - {fileID: 3438667469567175165, guid: 936e2e011ae85954b80730bed5a5cb89, type: 3}
+  - {fileID: 3438667469567175165, guid: 7cb7403a488537b44a80a30bb92c3c8c, type: 3}
   - {fileID: 3438667469567175165, guid: 340d24abf5dbad44688af2b55b4a9b29, type: 3}
+  - {fileID: 3438667469567175165, guid: 7669f4a4238747a47ba44952782011e9, type: 3}
   VertWalls:
   - {fileID: 3438667469567175165, guid: 7e4195e3680480e4abc37855288c63b1, type: 3}
   VertDoors:
