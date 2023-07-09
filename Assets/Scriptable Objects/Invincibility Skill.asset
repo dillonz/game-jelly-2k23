@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c901de3e4c86ae4cb263f3c7f5de8dd, type: 3}
   m_Name: Invincibility Skill
   m_EditorClassIdentifier: 
-  CooldownTime: 8
-  UIImage: {fileID: 0}
+  CooldownTime: 7
+  UIImage: {fileID: 502622137, guid: 2e94088e19d0e4544a722c26925cfaa5, type: 3}
   InvulnerableTime: 2
+  InvulnAlpha: 0.5

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8942971561696178908}
   - component: {fileID: -8438608779961666740}
   m_Layer: 0
-  m_Name: SpinningBladeDrop
+  m_Name: SlimeballDrop
   m_TagString: DroppedItems
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -640424246, guid: 362bf5c7cbd22b3439d08e22c92a587d, type: 3}
+  m_Sprite: {fileID: -2067675638, guid: 2e94088e19d0e4544a722c26925cfaa5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4894,4 +4894,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d31cda739743c4bb1f640504add4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillGiven: {fileID: 11400000, guid: a5b37498b55b1294387e08a5ee75faa7, type: 2}
+  SkillGiven: {fileID: 11400000, guid: 4b53d0c9e487c5c48b5ded1a090ef505, type: 2}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Dash Skill
   m_EditorClassIdentifier: 
   CooldownTime: 4
-  UIImage: {fileID: 0}
+  UIImage: {fileID: 1427261591, guid: 2e94088e19d0e4544a722c26925cfaa5, type: 3}
   force: 1
   time: 0.5

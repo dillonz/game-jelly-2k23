@@ -274,4 +274,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e95713126e59e7468f1c6eda50c157c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemToDropOnDeath: {fileID: 4522316695047090798, guid: d6553eca9aea6d748b866bd87759d86d, type: 3}
+  ItemToDropOnDeath: {fileID: 4522316695047090798, guid: 9f7e442266c29584bb80d0e436585b9c, type: 3}

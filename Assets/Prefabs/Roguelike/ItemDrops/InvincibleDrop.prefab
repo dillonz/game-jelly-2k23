@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8942971561696178908}
   - component: {fileID: -8438608779961666740}
   m_Layer: 0
-  m_Name: FireballDrop
+  m_Name: InvincibleDrop
   m_TagString: DroppedItems
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 358020459, guid: 2e94088e19d0e4544a722c26925cfaa5, type: 3}
+  m_Sprite: {fileID: 502622137, guid: 2e94088e19d0e4544a722c26925cfaa5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.625, y: 1.8125}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4894,4 +4894,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d31cda739743c4bb1f640504add4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillGiven: {fileID: 11400000, guid: a5b37498b55b1294387e08a5ee75faa7, type: 2}
+  SkillGiven: {fileID: 11400000, guid: b7710a5baf08d0a49b1844049c9b122f, type: 2}

@@ -45,7 +45,7 @@ public class LevelGenerator : MonoBehaviour
 
     public void spawnStuff()
     {
-        PlayerToMove.position = new Vector3(Width * roomWidth / 2f, Height * roomHeight / 2f - 5, -0.01);
+        PlayerToMove.position = new Vector3(Width * roomWidth / 2f, Height * roomHeight / 2f - 5, -0.01f);
         Vector2Int farthest = getFarthestRoom();
         HeroToMove.Warp(new Vector2(farthest.x * roomWidth / 2f + 3, farthest.y * roomHeight / 2f - 5));
     }
