@@ -89,6 +89,10 @@ public class StatsComponent : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+            else
+            {
+                EventBus.Publish(new PlayerDied());
+            }
         }
     }
 

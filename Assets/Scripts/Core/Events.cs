@@ -60,3 +60,5 @@ public class Knockback
         NormalizedDirection = normalizedDirection;
     }
 }
+
+public class PlayerDied { };
