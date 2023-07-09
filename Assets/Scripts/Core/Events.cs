@@ -28,7 +28,7 @@ using UnityEngine;
 public class AdjustStats
 {
     // Usage: Changes the players stats accordingly
-    public int MaxHealthDelta;
+    public float MaxHealthDelta;
     public float DefenseDelta;
     public float AttackDelta;
     public float RangeDelta;
@@ -36,7 +36,7 @@ public class AdjustStats
     public float AttackSpeedDelta;
     public float CooldownReductionDelta;
 
-    public AdjustStats(int maxHealthDelta, float defenseDelta, float attackDelta, float rangeDelta, float speedDelta, float attackSpeedDelta, float cooldownReductionDelta)
+    public AdjustStats(float maxHealthDelta, float defenseDelta, float attackDelta, float rangeDelta, float speedDelta, float attackSpeedDelta, float cooldownReductionDelta)
     {
         MaxHealthDelta = maxHealthDelta;
         DefenseDelta = defenseDelta;

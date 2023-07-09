@@ -369,7 +369,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2922772426321599228, guid: 4c2d9d140c2e8664e8a125cbad59b012, type: 3}
       propertyPath: StartingRange
-      value: 5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2922772426321599228, guid: 4c2d9d140c2e8664e8a125cbad59b012, type: 3}
+      propertyPath: StartingDefense
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2922772426321599228, guid: 4c2d9d140c2e8664e8a125cbad59b012, type: 3}
       propertyPath: StartingAttackCooldown

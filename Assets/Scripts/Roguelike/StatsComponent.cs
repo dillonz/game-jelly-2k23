@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class StatsComponent : MonoBehaviour
 {
-    public int StartingMaxHealth;
+    public float StartingMaxHealth;
     public float StartingDefense;
     public float StartingAttack;
     public float StartingRange;
@@ -13,7 +13,7 @@ public class StatsComponent : MonoBehaviour
     public float StartingAttackCooldown;
     public float StartingCooldownReduction;
 
-    protected int maxHealth;
+    protected float maxHealth;
     protected float defense;
     protected float attack;
     protected float range;
@@ -21,7 +21,7 @@ public class StatsComponent : MonoBehaviour
     protected float attackCooldown;
     protected float cooldownReduction;
 
-    protected int currentHealth;
+    protected float currentHealth;
 
     protected void Start()
     {
@@ -36,7 +36,7 @@ public class StatsComponent : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public int GetMaxHealth() { return maxHealth; }
+    public float GetMaxHealth() { return maxHealth; }
     public float GetDefense() {  return defense; }
     public float GetAttack() { return attack; }
     public float GetRange() { return range; }  
@@ -46,7 +46,7 @@ public class StatsComponent : MonoBehaviour
 
     public void OnDamage(float dealtDamage)
     {
-        currentHealth -= (int)Mathf.Ceil(dealtDamage * (1 - defense));
+        currentHealth -= dealtDamage * (1 - defense / 100);
 
         // Death
         if (currentHealth <= 0)
